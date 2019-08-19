@@ -35,6 +35,7 @@ class Receipt(models.Model):
     gallons = models.FloatField()
     price_per_gal = models.FloatField()
     is_cash_purchase = models.BooleanField()
+    note = models.CharField(null=True, blank=True, max_length=50)
 
     def __str__(self):
         if self.vehicle.nickname:

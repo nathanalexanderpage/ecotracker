@@ -6,7 +6,9 @@ from .models import FuelStation, Receipt, Vehicle
 # Create your views here.
 
 def index(request):
-    return HttpResponse("Hello world. This is Fuel Eco Tracker")
+    template = loader.get_template('FuelTrackerApp/index.html')
+    context = {}
+    return render(request, 'FuelTrackerApp/index.html', context)
 
 def fuel_station_detail(request, fuel_station_id):
     return HttpResponse("You're looking at gas station %s" % fuel_station_id)
