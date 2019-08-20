@@ -5,24 +5,8 @@
     <title>Fuel purchase: {{ receipt.receipt_datetime }}</title>
   </head>
   <body>
-    <nav>
-      <ul>
-        <li>
-          <a href="{% url 'index' %}">Home</a>
-        </li>
-        <li>
-          <a href="{% url 'vehicle_index' %}">Vehicles</a>
-        </li>
-        <li>
-          <a href="{% url 'receipt_index' %}">Fuel-Ups</a>
-        </li>
-        <li>
-          <a href="{% url 'index' %}">Logout</a>
-        </li>
-      </ul>
-    </nav>
     <div>
-      <a href="{% url 'receipt_new' %}">Purchases</a> &gt;&gt; Purchase Info
+      <a href="{% url 'index' %}">Home</a> &gt;&gt; <a href="{% url 'receipt_new' %}">Purchases</a> &gt;&gt; Purchase Info
     </div>
     <h1>Purchase Info</h1>
     <h3>Overview</h3>

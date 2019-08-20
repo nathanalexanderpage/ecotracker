@@ -15,7 +15,7 @@ urlpatterns = [
 
     # STATION PATTERN
     # ex: /stations/
-    path('stations/', views.fuel_station_index, name='receipt_index'),
+    path('stations/', views.fuel_station_index, name='fuel_station_index'),
     # ex: /stations/new/
     path('stations/new/', views.fuel_station_new, name='fuel_station_new'),
     # ex: /stations/5/
@@ -31,7 +31,7 @@ urlpatterns = [
 
     # VEHICLE PATTERN
     # ex: /vehicles/
-    path('purchases/', views.receipt_index, name='vehicle_index'),
+    path('vehicles/', views.vehicle_index, name='vehicle_index'),
     # ex: /vehicles/new/
     path('vehicles/new/', views.vehicle_new, name='vehicle_new'),
     # ex: /vehicles/4/

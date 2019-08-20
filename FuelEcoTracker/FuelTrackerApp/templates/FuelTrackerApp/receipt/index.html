@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Fill-Ups</title>
+  </head>
+  <body>
+    <div>
+      <a href="{% url 'index' %}">Home</a> &gt;&gt; Fill-Ups
+    </div>
+    <h1>Fill-Ups</h1>
+    {% if receipts %}
+      <ul>
+        {% for receipt in receipts %}
+          <li><a href="{% url 'receipt_detail' receipt.id %}">{{ receipt }}</a></li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>Site-wide, no fill-ups have been recorded! This must change!</p>
+    {% endif %}
+  </body>
+</html>

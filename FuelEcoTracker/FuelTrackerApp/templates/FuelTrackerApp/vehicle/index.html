@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Vehicles</title>
+  </head>
+  <body>
+    <div>
+      <a href="{% url 'index' %}">Home</a> &gt;&gt; Vehicles
+    </div>
+    <h1>Vehicles</h1>
+    {% if vehicles %}
+      <ul>
+        {% for vehicle in vehicles %}
+          <li><a href="{% url 'vehicle_detail' vehicle.id %}">{{ vehicle }}</a></li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>Site-wide, no fill-ups have been recorded! This must change!</p>
+    {% endif %}
+  </body>
+</html>

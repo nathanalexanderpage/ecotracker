@@ -1,6 +1,18 @@
-<h1>fuel station detail</h1>
-<h3>station {{ fuel_station.id }}</h3>
-<div>
-  <p>Company: {{ fuel_station.company }}</p>
-  <p>Address: {{ fuel_station.address }} {{ fuel_station.city }}, {{ fuel_station.state_abbr }} {{ fuel_station.zip_code }}</p>
-</div>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Fuel Station Info: {{ fuel_station.company }} — {{ fuel_station.city }}, {{ fuel_station.state_abbr }}</title>
+  </head>
+  <body>
+    <div>
+      <a href="{% url 'index' %}">Home</a> &gt;&gt; <a href="{% url 'fuel_station_index' %}">Fuel Stations</a> &gt;&gt; Purchase Info
+    </div>
+    <h1>Fuel Station Info</h1>
+    <h3>Overview</h3>
+    <div>
+      <p>Company: {{ fuel_station.company }}</p>
+      <p>Address: {{ fuel_station.address }} {{ fuel_station.city }}, {{ fuel_station.state_abbr }} {{ fuel_station.zip_code }}</p>
+    </div>
+  </body>
+</html>

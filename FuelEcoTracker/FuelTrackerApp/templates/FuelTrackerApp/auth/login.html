@@ -1,17 +1,29 @@
-<h1>Log In</h1>
-<form action="index.html" method="post">
-  <div class="simple-form">
-    <div class="field">
-      <label for="username">Username</label>
-      <input type="text" name="username" placeholder="ecofriend">
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div>
+      <a href="{% url 'index' %}">Home</a> &gt;&gt; Log-In
     </div>
-    <div class="field">
-      <label for="password">Password</label>
-      <input type="password" name="password">
-    </div>
-    <div class="field">
-      <input type="submit" name="submit" value="Log In">
-    </div>
-  </div>
-</form>
-<p>Don't have an account? <a href="{% url 'signup' %}">Sign up here.</a></p>
+    <h1>Log In</h1>
+    <form action="index.html" method="post">
+      <div class="simple-form">
+        <div class="field">
+          <label for="username">Username</label>
+          <input type="text" name="username" placeholder="ecofriend">
+        </div>
+        <div class="field">
+          <label for="password">Password</label>
+          <input type="password" name="password">
+        </div>
+        <div class="field">
+          <input type="submit" name="submit" value="Log In">
+        </div>
+      </div>
+    </form>
+    <p>Don't have an account? <a href="{% url 'signup' %}">Sign up here.</a></p>
+  </body>
+</html>

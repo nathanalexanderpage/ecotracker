@@ -18,7 +18,14 @@ def signup(request):
 
 # FUEL STATION VIEWS
 def fuel_station_index(request):
-    return render(request, 'FuelTrackerApp/fuel_station/index.html')
+    try:
+        fuel_stations = FuelStation.objects.all()
+    except:
+        fuel_stations = False
+    context = {
+        'fuel_stations': fuel_stations
+    }
+    return render(request, 'FuelTrackerApp/fuel_station/index.html', context)
 def fuel_station_detail(request, fuel_station_id):
     try:
         fuel_station = FuelStation.objects.get(pk=fuel_station_id)
@@ -33,7 +40,14 @@ def fuel_station_new(request):
 
 # RECEIPT VIEWS
 def receipt_index(request):
-    return render(request, 'FuelTrackerApp/receipt/index.html')
+    try:
+        receipts = Receipt.objects.all()
+    except:
+        receipts = False
+    context = {
+        'receipts': receipts
+    }
+    return render(request, 'FuelTrackerApp/receipt/index.html', context)
 def receipt_detail(request, receipt_id):
     try:
         print('Searching for Receipt object with pk=' + str(receipt_id))
@@ -58,7 +72,14 @@ def receipt_new(request):
 
 # VEHICLE VIEWS
 def vehicle_index(request):
-    return render(request, 'FuelTrackerApp/vehicle/index.html')
+    try:
+        vehicles = Vehicle.objects.all()
+    except:
+        vehicles = False
+    context = {
+        'vehicles': vehicles
+    }
+    return render(request, 'FuelTrackerApp/vehicle/index.html', context)
 def vehicle_detail(request, vehicle_id):
     try:
         vehicle = Vehicle.objects.get(pk=vehicle_id)

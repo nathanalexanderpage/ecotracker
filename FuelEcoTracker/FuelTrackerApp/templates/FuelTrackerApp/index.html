@@ -1,5 +1,34 @@
-<h1>HOME STUB</h1>
-{{ request }}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li>
+          <a href="{% url 'index' %}">Home</a>
+        </li>
+        <li>
+          <a href="{% url 'vehicle_index' %}">Vehicles</a>
+        </li>
+        <li>
+          <a href="{% url 'receipt_index' %}">Fill-Ups</a>
+        </li>
+        <li>
+          <a href="{% url 'fuel_station_index' %}">Fuel Stations</a>
+        </li>
+        <li>
+          <a href="#">Logout</a>
+        </li>
+      </ul>
+    </nav>
 
-<p><a href="{% url 'login' %}">Log in</a></p>
-<p><a href="{% url 'signup' %}">Sign up</a></p>
+    <h1>HOME STUB</h1>
+    {{ request }}
+
+    <p><a href="{% url 'login' %}">Log in</a></p>
+    <p><a href="{% url 'signup' %}">Sign up</a></p>
+  </body>
+</html>
