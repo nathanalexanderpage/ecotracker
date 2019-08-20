@@ -1,32 +1,60 @@
-<h1>purchase detail</h1>
-<h3>purchase {{ receipt.id }}</h3>
-<div>
-  <p>
-    {{ vehicle.owner.username }}'s
-    {% if vehicle.nickname %}
-    <a href="{% url 'vehicle_detail' vehicle.id %}">{{ vehicle.nickname }}</a> ({{ vehicle.make }} {{ vehicle.model }})
-    {% else %}
-    {{ vehicle.make }} {{ vehicle.model }}
-    {% endif %}
-  </p>
-  <p>
-    {{ receipt.gallons }}gal @ ${{ receipt.price_per_gal}}/gal
-  </p>
-  <p>
-    Total: ${{ price_total }}
-  </p>
-  <p>
-    Paid with
-    {% if receipt.is_cash_purchase %}
-    cash
-    {% else %}
-    card
-    {% endif %}
-  </p>
-  <p>
-    Location: <a href="{% url 'fuel_station_detail' fuel_station.id %}">{{ fuel_station.company }}</a>
-  </p>
-  <p>
-    Address: {{ fuel_station.address }} {{ fuel_station.city }}, {{ fuel_station.state_abbr }} {{ fuel_station.zip_code }}
-  </p>
-</div>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Fuel purchase: {{ receipt.receipt_datetime }}</title>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li>
+          <a href="{% url 'index' %}">Home</a>
+        </li>
+        <li>
+          <a href="{% url 'vehicle_index' %}">Vehicles</a>
+        </li>
+        <li>
+          <a href="{% url 'receipt_index' %}">Fuel-Ups</a>
+        </li>
+        <li>
+          <a href="{% url 'index' %}">Logout</a>
+        </li>
+      </ul>
+    </nav>
+    <div>
+      <a href="{% url 'receipt_new' %}">Purchases</a> &gt;&gt; Purchase Info
+    </div>
+    <h1>Purchase Info</h1>
+    <h3>Overview</h3>
+    <div>
+      <p>
+        {{ vehicle.owner.username }}'s
+        {% if vehicle.nickname %}
+        <a href="{% url 'vehicle_detail' vehicle.id %}">{{ vehicle.nickname }} ({{ vehicle.make }} {{ vehicle.model }})</a>
+        {% else %}
+        {{ vehicle.make }} {{ vehicle.model }}
+        {% endif %}
+      </p>
+      <p>
+        {{ receipt.gallons }}gal @ ${{ receipt.price_per_gal}}/gal
+      </p>
+      <p>
+        Total: ${{ price_total }}
+      </p>
+      <p>
+        Paid with
+        {% if receipt.is_cash_purchase %}
+        cash
+        {% else %}
+        card
+        {% endif %}
+      </p>
+      <p>
+        Company: {{ fuel_station.company }}
+      </p>
+      <p>
+        Location: <a href="{% url 'fuel_station_detail' fuel_station.id %}">{{ fuel_station.address }}, {{ fuel_station.city }}, {{ fuel_station.state_abbr }} {{ fuel_station.zip_code }}</a>
+      </p>
+    </div>
+  </body>
+</html>
