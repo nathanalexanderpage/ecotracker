@@ -24,7 +24,7 @@ class FuelStation(models.Model):
     longitude = models.FloatField(null=True, blank=True)
 
     def __str__(self):
-        return self.city + ', ' + self.state_abbr + ' ' + self.company + ' @ ' + self.address + ' (' + self.zip_code + ')'
+        return self.company + ' in ' + self.city + ', ' + self.state_abbr + ' @ ' + self.address + ' (' + self.zip_code + ')'
 
 class Receipt(models.Model):
     vehicle = models.ForeignKey(Vehicle, on_delete=models.CASCADE)
@@ -34,6 +34,7 @@ class Receipt(models.Model):
     # receipt_time = models.TimeField(default=timezone.now)
     gallons = models.FloatField()
     price_per_gal = models.FloatField()
+    mi_since_last = models.FloatField()
     is_cash_purchase = models.BooleanField()
     note = models.CharField(null=True, blank=True, max_length=50)
 
