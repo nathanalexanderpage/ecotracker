@@ -5,24 +5,27 @@
     <title></title>
   </head>
   <body>
+    <div>
+      <a href="{% url 'index' %}">Home</a> &gt;&gt; <a href="{% url 'fuel_station_index' %}">Fuel Stations</a> &gt;&gt; New
+    </div>
     <h1>New Fuel Station</h1>
+    {% if fuel_stations %}
     <div>
       <h3>A quick check</h3>
-      {% if fuel_stations %}
-        <p>Does the fuel station you were about to create already exist?</p>
-        <figure>
-          <figcaption>Existing fuel stations:</figcaption>
-          <ul>
-            {% for fuel_station in fuel_stations %}
-              <li>
-                {{ fuel_station }}
-              </li>
-            {% endfor %}
-          </ul>
-        </figure>
-      {% endif %}
+      <p>Does the fuel station you were about to create already exist?</p>
+      <figure>
+        <figcaption>Existing fuel stations:</figcaption>
+        <ul>
+          {% for fuel_station in fuel_stations %}
+            <li>
+              {{ fuel_station }}
+            </li>
+          {% endfor %}
+        </ul>
+      </figure>
     </div>
-    <form action="index.html" method="post">
+    {% endif %}
+    <!-- <form action="index.html" method="post">
       <div>
         <h3>New Fuel Station Entry Form</h3>
         <div class="field">
@@ -49,7 +52,12 @@
           <input type="submit" name="submit" value="Submit">
         </div>
       </div>
+    </form> -->
+    <form action="{% url 'fuel_station_new' %}" method="post">
+      {% csrf_token %}
+      {{ form }}
+      <input type="text" name="next" value="{% url 'fuel_station_index' %}">
+      <input type="submit" name="submit" value="Submit">
     </form>
-
   </body>
 </html>

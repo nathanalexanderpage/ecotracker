@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>New Fill-Up</title>
+  </head>
+  <body>
+    <div>
+      <a href="{% url 'index' %}">Home</a> &gt;&gt; <a href="{% url 'receipt_index' %}">Fill-Ups</a> &gt;&gt; New
+    </div>
+    <h1>New Fill-Up</h1>
+    <form action="{% url 'receipt_new' %}" method="post">
+      <div>
+        {% csrf_token %}
+        {{ form }}
+        <input type="text" name="next" value="{% url 'receipt_index' %}">
+        <input type="submit" name="submit" value="Submit">
+      </div>
+    </form>
+  </body>
+</html>

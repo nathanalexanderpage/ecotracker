@@ -2,11 +2,11 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Fuel purchase: {{ receipt.receipt_datetime }}</title>
+    <title>Fill-Up: {{ receipt.receipt_datetime }}</title>
   </head>
   <body>
     <div>
-      <a href="{% url 'index' %}">Home</a> &gt;&gt; <a href="{% url 'receipt_new' %}">Purchases</a> &gt;&gt; {{ receipt }}
+      <a href="{% url 'index' %}">Home</a> &gt;&gt; <a href="{% url 'receipt_index' %}">Fill-Ups</a> &gt;&gt; {{ receipt }}
     </div>
     <h1>Purchase Info</h1>
     <h3>Overview</h3>

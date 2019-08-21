@@ -1,14 +1,22 @@
+from datetime import date, datetime
+from django import forms
 from django.conf import settings
 from django.http import HttpResponse, Http404
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.template import loader
+from django.utils import timezone
+from FuelTrackerApp.forms import FuelStationForm, ReceiptForm, VehicleForm
 from .models import FuelStation, Receipt, Vehicle
 
 # Create your views here.
 
 # INDEX VIEWS
 def index(request):
-    return render(request, 'FuelTrackerApp/index.html')
+    year = datetime.today().year
+    context = {
+        'year': year
+    }
+    return render(request, 'FuelTrackerApp/index.html', context)
 
 # AUTH VIEWS
 def login(request):
@@ -36,7 +44,21 @@ def fuel_station_detail(request, fuel_station_id):
     }
     return render(request, 'FuelTrackerApp/fuel_station/detail.html', context)
 def fuel_station_new(request):
-    return HttpResponse("You're making a new gas station")
+    if request.method == "POST":
+        form = FuelStationForm(request.POST)
+        if form.is_valid():
+            next_url = request.POST.get('next')
+            model_instance = form.save(commit=False)
+            model_instance.timestamp = timezone.now()
+            model_instance.save()
+            redirect_url = next_url + str(model_instance.id)
+            return redirect(redirect_url)
+    else:
+        form = FuelStationForm()
+        context = {
+            'form': form
+        }
+        return render(request, 'FuelTrackerApp/fuel_station/new.html', context)
 
 # RECEIPT VIEWS
 def receipt_index(request):
@@ -68,7 +90,21 @@ def receipt_detail(request, receipt_id):
     }
     return render(request, 'FuelTrackerApp/receipt/detail.html', context)
 def receipt_new(request):
-    return HttpResponse("You're inputting a new receipt")
+    if request.method == "POST":
+        form = ReceiptForm(request.POST)
+        if form.is_valid():
+            next_url = request.POST.get('next')
+            model_instance = form.save(commit=False)
+            model_instance.timestamp = timezone.now()
+            model_instance.save()
+            redirect_url = next_url + str(model_instance.id)
+            return redirect(redirect_url)
+    else:
+        form = ReceiptForm()
+        context = {
+            'form': form
+        }
+        return render(request, 'FuelTrackerApp/receipt/new.html', context)
 
 # VEHICLE VIEWS
 def vehicle_index(request):
@@ -97,7 +133,19 @@ def vehicle_new(request):
         vehicles = Vehicle.objects.all()
     except:
         vehicles = False
+    if request.method == "POST":
+        form = VehicleForm(request.POST)
+        if form.is_valid():
+            next_url = request.POST.get('next')
+            model_instance = form.save(commit=False)
+            model_instance.timestamp = timezone.now()
+            model_instance.save()
+            redirect_url = next_url + str(model_instance.id)
+            return redirect(redirect_url)
+    else:
+        form = VehicleForm()
     context = {
+        'form': form,
         'vehicles': vehicles
     }
     return render(request, 'FuelTrackerApp/vehicle/new.html', context)

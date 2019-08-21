@@ -22,12 +22,12 @@ urlpatterns = [
     path('stations/<int:fuel_station_id>/', views.fuel_station_detail, name='fuel_station_detail'),
 
     # PURCHASE PATTERN
-    # ex: /purchases/
-    path('purchases/', views.receipt_index, name='receipt_index'),
-    # ex: /purchases/new/
-    path('purchases/new/', views.receipt_new, name='receipt_new'),
-    # ex: /purchases/3/
-    path('purchases/<int:receipt_id>/', views.receipt_detail, name='receipt_detail'),
+    # ex: /fillups/
+    path('fillups/', views.receipt_index, name='receipt_index'),
+    # ex: /fillups/new/
+    path('fillups/new/', views.receipt_new, name='receipt_new'),
+    # ex: /fillups/3/
+    path('fillups/<int:receipt_id>/', views.receipt_detail, name='receipt_detail'),
 
     # VEHICLE PATTERN
     # ex: /vehicles/
