@@ -49,6 +49,7 @@
         </div>
       </div>
     </form> -->
+    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
     <form method="post">
       <div>
         {% csrf_token %}

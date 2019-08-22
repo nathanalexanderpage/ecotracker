@@ -4,6 +4,7 @@ from django.conf import settings
 from django.http import HttpResponse, Http404
 from django.shortcuts import render, redirect
 from django.template import loader
+from django.urls import reverse
 from django.utils import timezone
 from FuelTrackerApp.forms import FuelStationForm, ReceiptForm, VehicleForm
 from .models import FuelStation, Receipt, Vehicle
@@ -35,10 +36,7 @@ def fuel_station_index(request):
     }
     return render(request, 'FuelTrackerApp/fuel_station/index.html', context)
 def fuel_station_detail(request, fuel_station_id):
-    try:
-        fuel_station = FuelStation.objects.get(pk=fuel_station_id)
-    except:
-        raise Http404("Indicated fuel station does not exist")
+    fuel_station = get_object_or_404(FuelStation, pk=fuel_station_id)
     context = {
         'fuel_station': fuel_station
     }

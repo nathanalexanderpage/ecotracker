@@ -1,7 +1,7 @@
 from datetime import date, datetime
 from django.db import models
 from django.conf import settings
-from django.core.validators import MaxValueValidator, MinValueValidator
+# from django.core.validators import MaxValueValidator, MinValueValidator
 from django.utils import timezone
 
 # Create your models here.
@@ -14,6 +14,9 @@ class Vehicle(models.Model):
 
     def __str__(self):
         return ((self.nickname + ', ') if self.nickname else '') + ' ' + self.owner.username + '\'s ' + str(self.year) + ' ' + self.make + ' ' + self.model
+
+    def is_recent_model(self):
+        return self.year > datetime.today().year - 4
 
 class FuelStation(models.Model):
     company = models.CharField(max_length=50, help_text="The company that owns the fuel station. ex: 7-Eleven, Shell, 79, Costco")

@@ -53,6 +53,7 @@
         </div>
       </div>
     </form> -->
+    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
     <form action="{% url 'fuel_station_new' %}" method="post">
       {% csrf_token %}
       {{ form }}
