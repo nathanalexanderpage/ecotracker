@@ -1,12 +1,14 @@
 from datetime import date, datetime
 from django import forms
 from django.conf import settings
+from django.contrib.auth import login
+from django.contrib.auth.models import User
 from django.http import HttpResponse, Http404
 from django.shortcuts import render, redirect
 from django.template import loader
 from django.urls import reverse
 from django.utils import timezone
-from FuelTrackerApp.forms import FuelStationForm, ReceiptForm, VehicleForm
+from FuelTrackerApp.forms import FuelStationForm, ReceiptForm, UserForm, VehicleForm
 from .models import FuelStation, Receipt, Vehicle
 
 # Create your views here.
@@ -23,7 +25,19 @@ def index(request):
 def login(request):
     return render(request, 'FuelTrackerApp/auth/login.html')
 def signup(request):
-    return render(request, 'FuelTrackerApp/auth/signup.html')
+    if request.method == "POST":
+        form = UserForm(request.POST)
+        if form.is_valid():
+            new_user = User.objects.create_user(**form.cleaned_data)
+            login(new_user)
+            return redirect('index')
+    else:
+        form = UserForm()
+        print(form)
+        context = {
+            'form': form
+        }
+        return render(request, 'FuelTrackerApp/auth/signup.html', context)
 
 # FUEL STATION VIEWS
 def fuel_station_index(request):

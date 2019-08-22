@@ -16,13 +16,13 @@ class Vehicle(models.Model):
         return ((self.nickname + ', ') if self.nickname else '') + ' ' + self.owner.username + '\'s ' + str(self.year) + ' ' + self.make + ' ' + self.model
 
     def is_recent_model(self):
-        return self.year > datetime.today().year - 4
+        return datetime.today().year - 4 < self.year <= datetime.today().year + 2
 
 class FuelStation(models.Model):
     company = models.CharField(max_length=50, help_text="The company that owns the fuel station. ex: 7-Eleven, Shell, 79, Costco")
     address = models.CharField(max_length=80, help_text="Street address of the fuel station (number and street name portion)")
     city = models.CharField(max_length=50, help_text="City in which the fuel station is located")
-    state_abbr = models.CharField(max_length=2, verbose_name="State (2-letter)", help_text="State's two-letter postal abbreviation. ex: NY, FL, ME, WA, CA")
+    state_abbr = models.CharField(max_length=2, verbose_name="State", help_text="State's two-letter postal abbreviation. ex: AK, CA, FL, NY, ME, WA")
     zip_code = models.CharField(max_length=5, help_text="Postal (zip) code portion of the fuel station's street address")
     latitude = models.FloatField(null=True, blank=True, help_text="Latitude coordinate of the fuel station")
     longitude = models.FloatField(null=True, blank=True, help_text="Longitude coordinate of the fuel station")
@@ -33,7 +33,7 @@ class FuelStation(models.Model):
 class Receipt(models.Model):
     vehicle = models.ForeignKey(Vehicle, on_delete=models.CASCADE, help_text="Vehicle which received the fill-up")
     gas_station = models.ForeignKey(FuelStation, on_delete=models.CASCADE, verbose_name="Fuel station", help_text="Fuel station at which the fill-up was made")
-    receipt_datetime = models.DateTimeField(default=datetime.now, verbose_name="Date & time", help_text="The date & time of the fill-up. Must format as: YYYY-MM-DD hh:mm:ss")
+    receipt_datetime = models.DateTimeField(default=timezone.now, verbose_name="Date & time", help_text="The date & time of the fill-up. Must format as: YYYY-MM-DD hh:mm:ss")
     # receipt_date = models.DateField(default=date.today)
     # receipt_time = models.TimeField(default=timezone.now)
     gallons = models.FloatField(help_text="The number of gallons purchased")

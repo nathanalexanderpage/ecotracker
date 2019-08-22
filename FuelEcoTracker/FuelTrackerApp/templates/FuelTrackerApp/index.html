@@ -3,6 +3,8 @@
   <head>
     <meta charset="utf-8">
     <title>Home</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'FuelTrackerApp/style.css' %}">
   </head>
   <body>
     <nav>
@@ -41,6 +43,7 @@
         <li>profile stats</li>
         <li>stats visuals</li>
         <li>Mapbox for fuel station locations</li>
+        <li>receipt "tags" to identify groups, subgroups for detailed stats</li>
       </ol>
     </div>
   </body>

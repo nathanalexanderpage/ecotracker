@@ -9,7 +9,7 @@
       <a href="{% url 'index' %}">Home</a> &gt;&gt; Sign-Up
     </div>
     <h1>Sign-Up Form</h1>
-    <form action="index.html" method="post">
+    <!-- <form action="index.html" method="post">
       <div class="simple-form">
         <div class="field">
           <label for="email">E-mail</label>
@@ -31,7 +31,14 @@
           <input type="submit" name="submit" value="Sign up">
         </div>
       </div>
-    </form>
+    </form> -->
+    <div>
+      <form method="POST">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" name="submit" value="Create Account">
+      </form>
+    </div>
     <p>Already have an account? <a href="{% url 'login' %}">Log in here.</a></p>
   </body>
 </html>
