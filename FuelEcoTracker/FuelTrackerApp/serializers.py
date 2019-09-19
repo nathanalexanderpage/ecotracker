@@ -1,6 +1,7 @@
 from rest_framework import seializers
 from .models import FuelStation, Receipt, Vehicle
 
+# configure serializers here
 class FuelStationSerializer(serializers.ModelSerializer):
     class Meta:
         model = FuelStation
