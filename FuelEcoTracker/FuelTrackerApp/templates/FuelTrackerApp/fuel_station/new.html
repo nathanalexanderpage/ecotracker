@@ -57,7 +57,7 @@
     <form action="{% url 'fuel_station_new' %}" method="post">
       {% csrf_token %}
       {{ form }}
-      <input type="text" name="next" value="{% url 'fuel_station_index' %}">
+      <input type="hidden" name="next" value="{% url 'fuel_station_index' %}">
       <input type="submit" name="submit" value="Submit">
     </form>
   </body>
