@@ -10,7 +10,7 @@
     <nav>
       <ul>
         <li>
-          <a href="{% url 'index' %}">Home</a>
+          <a href="{% url 'eco_index' %}">Home</a>
         </li>
         <li>
           <a href="{% url 'vehicle_index' %}">Vehicles</a>
@@ -28,11 +28,9 @@
     </nav>
 
     <h1>HOME STUB</h1>
-    {{ request }}
-    {{ year }}
 
-    <p><a href="{% url 'login' %}">Log in</a></p>
-    <p><a href="{% url 'signup' %}">Sign up</a></p>
+    <p><a href="{% url 'user_login' %}">Log in</a></p>
+    <p><a href="{% url 'user_signup' %}">Sign up</a></p>
     <div>
       <ol>
         <li>user log-in</li>

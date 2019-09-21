@@ -6,13 +6,13 @@ from . import views
 urlpatterns = [
     # INDEX PATTERN
     # ex: /
-    path('', views.index, name='index'),
+    path('', views.eco_index, name='eco_index'),
 
     # AUTH PATTERN
     # ex: /auth/login/
-    path('login/', views.login, name='login'),
+    path('login/', views.user_login, name='user_login'),
     # ex: /auth/signup/
-    path('signup/', views.signup, name='signup'),
+    path('signup/', views.user_signup, name='user_signup'),
 
     # STATION PATTERN
     # ex: /stations/

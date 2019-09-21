@@ -6,7 +6,7 @@
   </head>
   <body>
     <div>
-      <a href="{% url 'index' %}">Home</a> &gt;&gt; Vehicles
+      <a href="{% url 'eco_index' %}">Home</a> &gt;&gt; Vehicles
     </div>
     <h1>Vehicles</h1>
     {% if vehicles %}
@@ -16,7 +16,7 @@
         {% endfor %}
       </ul>
     {% else %}
-      <p>Site-wide, no fill-ups have been recorded! This must change!</p>
+      <p>Site-wide, no vehicles have been registered! Be the first!</p>
     {% endif %}
     <p>
       <a href="{% url 'vehicle_new' %}">New</a>
