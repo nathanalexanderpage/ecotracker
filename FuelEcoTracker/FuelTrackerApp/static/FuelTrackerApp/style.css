@@ -1,3 +1,41 @@
-a {
-  color: green;
+/* CSS RESET */
+body, html {
+    margin: 0;
+    padding: 0;
+    border: 0;
 }
+
+/* GENERAL */
+a {
+    color: green;
+}
+
+/* NAVIGATION */
+nav {
+    background-color: aquamarine;
+}
+nav a {
+    text-decoration: none;
+}
+nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+}
+nav ul li {
+    padding: 1em;
+    display: block;
+}
+nav ul a:hover {
+    background-color: rgb(115, 230, 191);
+}
+.flex-stretch {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 100% | auto;
+}
+
+

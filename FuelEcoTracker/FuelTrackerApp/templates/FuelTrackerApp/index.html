@@ -2,52 +2,66 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Home</title>
+    <title>Fuel Economy Tracker</title>
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'FuelTrackerApp/style.css' %}">
   </head>
   <body>
     <nav>
       <ul>
-        <li>
-          <a href="{% url 'eco_index' %}">Home</a>
+        <a href="{% url 'eco_index' %}">
+          <li>
+            Home
+          </li>
+        </a>
+        <a href="{% url 'vehicle_index' %}">
+          <li>
+            Vehicles
+          </li>
+        </a>
+        <a href="{% url 'receipt_index' %}">
+          <li>
+              Fill-Ups
+          </li>
+        </a>
+        <a href="{% url 'fuel_station_index' %}">
+          <li>
+              Fuel Stations
+          </li>
+        </a>
+        <li class="flex-stretch">
+          <!-- STRETCHY FILLER BLOCK -->
         </li>
-        <li>
-          <a href="{% url 'vehicle_index' %}">Vehicles</a>
-        </li>
-        <li>
-          <a href="{% url 'receipt_index' %}">Fill-Ups</a>
-        </li>
-        <li>
-          <a href="{% url 'fuel_station_index' %}">Fuel Stations</a>
-        </li>
-        <li>
-          <a href="{% url 'user_logout' %}">Logout</a>
-        </li>
+        <a href="{% url 'user_logout' %}">
+          <li>
+              Logout
+          </li>
+        </a>
       </ul>
     </nav>
-
-    <h1>HOME STUB</h1>
-    {% if user.is_authenticated %}
-      <p>logged in as {{ user.username }}</p>
-      <p>{{id}}</p>
-    {% endif %}
-
-    <p><a href="{% url 'user_login' %}">Log in</a></p>
-    <p><a href="{% url 'user_signup' %}">Sign up</a></p>
-    <div>
-      <ol>
-        <li><s>user sign-up</s></li>
-        <li><s>user log-in</s></li>
-        <li><s>user logout</s></li>
-        <li><s>user vehicles/fill-up visibility restriction</s></li>
-        <li>profile stats</li>
-        <li>CSS (mobile)</li>
-        <li>CSS (desktop)</li>
-        <li>stats visuals</li>
-        <li>Mapbox for fuel station locations</li>
-        <li>receipt "tags" to identify groups, subgroups for detailed stats</li>
-      </ol>
-    </div>
+    <main>
+      <h1>HOME</h1>
+      {% if user.is_authenticated %}
+        <p>logged in as {{ user.username }}</p>
+      {% else %}
+      <p><a href="{% url 'user_login' %}">Log in</a></p>
+      <p><a href="{% url 'user_signup' %}">Sign up</a></p>
+      {% endif %}
+      <section>
+        <h3>To-Do:</h3>
+        <ol>
+          <li><s>user sign-up</s></li>
+          <li><s>user log-in</s></li>
+          <li><s>user logout</s></li>
+          <li><s>user vehicles/fill-up visibility restriction</s></li>
+          <li>profile stats</li>
+          <li>CSS (mobile)</li>
+          <li>CSS (desktop)</li>
+          <li>stats visuals</li>
+          <li>Mapbox for fuel station locations</li>
+          <li>receipt "tags" to identify groups, subgroups for detailed stats</li>
+        </ol>
+      </section>
+    </main>
   </body>
 </html>
