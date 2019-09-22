@@ -20,10 +20,10 @@
           {% endfor %}
         </ul>
       {% else %}
-        <p>Site-wide, no fill-ups have been recorded! This must change!</p>
+        <p>No fill-ups have been recorded for any of your vehicles! This must change!</p>
       {% endif %}
       <p>
-        <a href="{% url 'receipt_new' %}">New</a>
+        <a href="{% url 'receipt_new' %}">Add fill-up record</a>
       </p>
     </main>
   </body>

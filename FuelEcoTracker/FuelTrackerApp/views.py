@@ -1,7 +1,7 @@
 from datetime import date, datetime
 from django import forms
 from django.conf import settings
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.http import HttpResponse, Http404
 from django.shortcuts import get_object_or_404, render, redirect
@@ -29,8 +29,7 @@ def user_login(request):
             login(request, user)
             return redirect('eco_index')
         else:
-            login(request, user)
-            return redirect(request, 'FuelTrackerApp/index.html')
+            return redirect(request, 'user_login')
     return render(request, 'FuelTrackerApp/auth/login.html')
 def user_signup(request):
     if request.method == 'POST':
@@ -40,7 +39,7 @@ def user_signup(request):
             new_user = User.objects.create_user(**form.cleaned_data)
             print(new_user)
             login(request, new_user)
-            return redirect(request, 'FuelTrackerApp/index.html')
+            return redirect(request, 'eco_index')
     else:
         form = UserForm()
         print(form)
@@ -48,13 +47,17 @@ def user_signup(request):
             'form': form
         }
         return render(request, 'FuelTrackerApp/auth/signup.html', context)
+def user_logout(request):
+    if request.method == 'GET':
+        logout(request)
+    return redirect('eco_index')
 
 # FUEL STATION VIEWS
 def fuel_station_index(request):
     try:
         fuel_stations = FuelStation.objects.all()
     except:
-        fuel_stations = False
+        fuel_stations = None
     context = {
         'fuel_stations': fuel_stations
     }
@@ -85,9 +88,9 @@ def fuel_station_new(request):
 # RECEIPT VIEWS
 def receipt_index(request):
     try:
-        receipts = Receipt.objects.all()
+        receipts = Receipt.objects.filter(owner_id=request.user.id)
     except:
-        receipts = False
+        receipts = None
     context = {
         'receipts': receipts
     }
@@ -119,8 +122,7 @@ def receipt_new(request):
             model_instance = form.save(commit=False)
             model_instance.timestamp = timezone.now()
             model_instance.save()
-            redirect_url = next_url + str(model_instance.id)
-            return redirect(redirect_url)
+            return redirect('receipt_index')
     else:
         form = ReceiptForm()
         context = {
@@ -133,7 +135,7 @@ def vehicle_index(request):
     try:
         vehicles = Vehicle.objects.all()
     except:
-        vehicles = False
+        vehicles = None
     context = {
         'vehicles': vehicles
     }
@@ -152,9 +154,9 @@ def vehicle_detail(request, vehicle_id):
     return render(request, 'FuelTrackerApp/vehicle/detail.html', context)
 def vehicle_new(request):
     try:
-        vehicles = Vehicle.objects.all()
+        vehicles = Vehicle.objects.filter(owner_id=request.user.id)
     except:
-        vehicles = False
+        vehicles = None
     if request.method == 'POST':
         form = VehicleForm(request.POST)
         if form.is_valid():
@@ -162,8 +164,7 @@ def vehicle_new(request):
             model_instance = form.save(commit=False)
             model_instance.timestamp = timezone.now()
             model_instance.save()
-            redirect_url = next_url + str(model_instance.id)
-            return redirect(redirect_url)
+            return redirect(vehicle_index)
     else:
         form = VehicleForm()
     context = {

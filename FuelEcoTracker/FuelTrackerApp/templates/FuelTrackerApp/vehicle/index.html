@@ -14,16 +14,17 @@
         <p>logged in as {{ user.username }}</p>
       {% endif %}
       {% if vehicles %}
+        <p>Your vehicles:</p>
         <ul>
           {% for vehicle in vehicles %}
             <li><a href="{% url 'vehicle_detail' vehicle.id %}">{{ vehicle }}</a></li>
           {% endfor %}
         </ul>
       {% else %}
-        <p>Site-wide, no vehicles have been registered! Be the first!</p>
+        <p>You have not yet added any vehicles to track.</p>
       {% endif %}
       <p>
-        <a href="{% url 'vehicle_new' %}">New</a>
+        <a href="{% url 'vehicle_new' %}">Add vehicle</a>
       </p>
     </main>
   </body>

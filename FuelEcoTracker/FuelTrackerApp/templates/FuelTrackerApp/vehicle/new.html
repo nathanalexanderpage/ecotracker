@@ -13,7 +13,7 @@
       {% if user.is_authenticated %}
         <p>logged in as {{ user.username }}</p>
       {% endif %}
-      <div>
+      <section>
         <h3>A quick check</h3>
         {% if vehicles %}
           <p>Does the vehicle record you were about to create already exist?</p>
@@ -28,7 +28,7 @@
             </ul>
           </figure>
         {% endif %}
-      </div>
+      </section>
       <!-- <form action="index.html" method="post">
         <div>
           <h3>New Vehicle Entry Form</h3>
@@ -58,7 +58,6 @@
         <div>
           {% csrf_token %}
           {{ form }}
-          <input type="text" name="next" value="{% url 'vehicle_index' %}">
           <input type="submit" name="submit" value="Submit">
         </div>
       </form>

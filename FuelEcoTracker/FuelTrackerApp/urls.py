@@ -11,6 +11,8 @@ urlpatterns = [
     # AUTH PATTERN
     # ex: /auth/login/
     path('login/', views.user_login, name='user_login'),
+    # ex: /auth/logout/
+    path('logout/', views.user_logout, name='user_logout'),
     # ex: /auth/signup/
     path('signup/', views.user_signup, name='user_signup'),
 

@@ -22,7 +22,7 @@
           <a href="{% url 'fuel_station_index' %}">Fuel Stations</a>
         </li>
         <li>
-          <a href="#">Logout</a>
+          <a href="{% url 'user_logout' %}">Logout</a>
         </li>
       </ul>
     </nav>
@@ -30,15 +30,16 @@
     <h1>HOME STUB</h1>
     {% if user.is_authenticated %}
       <p>logged in as {{ user.username }}</p>
+      <p>{{id}}</p>
     {% endif %}
 
     <p><a href="{% url 'user_login' %}">Log in</a></p>
     <p><a href="{% url 'user_signup' %}">Sign up</a></p>
     <div>
       <ol>
-        <li>user sign-up</li>
-        <li>user log-in</li>
-        <li>user logout</li>
+        <li><s>user sign-up</s></li>
+        <li><s>user log-in</s></li>
+        <li><s>user logout</s></li>
         <li>user vehicles/fill-up visibility restriction</li>
         <li>CSS (mobile)</li>
         <li>CSS (desktop)</li>
