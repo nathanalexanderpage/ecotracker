@@ -9,9 +9,20 @@ body, html {
 a {
     color: green;
 }
+body {
+    background-color: floralwhite;
+}
+html {
+    height: 100%;
+}
+main {
+    margin: 0 10vw;
+    background-color: white;
+}
 
 /* NAVIGATION */
 nav {
+    padding: 0 10vw;
     background-color: aquamarine;
 }
 nav a {
@@ -23,7 +34,7 @@ nav ul {
     list-style: none;
     display: flex;
     flex-direction: row;
-    justify-content: start;
+    flex-wrap: nowrap;
 }
 nav ul li {
     padding: 1em;
@@ -32,10 +43,12 @@ nav ul li {
 nav ul a:hover {
     background-color: rgb(115, 230, 191);
 }
-.flex-stretch {
+.flex-stretch-center {
+    padding: 0;
     flex-grow: 1;
     flex-shrink: 1;
     flex-basis: 100% | auto;
 }
+
 
 

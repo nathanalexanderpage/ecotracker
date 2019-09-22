@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>{% block title %}{% endblock %}—Fuel Eco-Tracker</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'FuelTrackerApp/style.css' %}">
+  </head>
+  <body>
+		<nav>
+			<ul>
+				<a href="{% url 'eco_index' %}">
+					<li>
+						Home
+					</li>
+				</a>
+				<a href="{% url 'vehicle_index' %}">
+					<li>
+						Vehicles
+					</li>
+				</a>
+				<a href="{% url 'receipt_index' %}">
+					<li>
+							Fill-Ups
+					</li>
+				</a>
+				<a href="{% url 'fuel_station_index' %}">
+					<li>
+							Fuel Stations
+					</li>
+				</a>
+				<li class="flex-stretch-center">
+					<!-- STRETCHY FILLER BLOCK -->
+				</li>
+				<a href="{% url 'user_logout' %}">
+					<li>
+							Logout
+					</li>
+				</a>
+			</ul>
+		</nav>
+    {% block content %}
+    {% endblock %}
+  </body>
+</html>
