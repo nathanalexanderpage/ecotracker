@@ -96,7 +96,11 @@ def fuel_station_new(request):
 # RECEIPT VIEWS
 def receipt_index(request):
     try:
-        receipts = Receipt.objects.filter(owner_id=request.user.id)
+        # FIXME -- could use prefetch_related() to query vehicles
+        vehicles = Vehicle.objects.filter(owner_id=request.user.id)
+        print(vehicles)
+        receipts = Receipt.objects.filter(vehicle__owner_id=request.user.id)
+        print(receipts)
     except:
         receipts = None
     context = {
@@ -141,7 +145,7 @@ def receipt_new(request):
 # VEHICLE VIEWS
 def vehicle_index(request):
     try:
-        vehicles = Vehicle.objects.all()
+        vehicles = Vehicle.objects.filter(owner_id=request.user.id)
     except:
         vehicles = None
     context = {
