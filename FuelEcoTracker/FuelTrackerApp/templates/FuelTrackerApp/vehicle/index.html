@@ -8,18 +8,23 @@
     <div>
       <a href="{% url 'eco_index' %}">Home</a> &gt;&gt; Vehicles
     </div>
-    <h1>Vehicles</h1>
-    {% if vehicles %}
-      <ul>
-        {% for vehicle in vehicles %}
-          <li><a href="{% url 'vehicle_detail' vehicle.id %}">{{ vehicle }}</a></li>
-        {% endfor %}
-      </ul>
-    {% else %}
-      <p>Site-wide, no vehicles have been registered! Be the first!</p>
-    {% endif %}
-    <p>
-      <a href="{% url 'vehicle_new' %}">New</a>
-    </p>
+    <main>
+      <h1>Vehicles</h1>
+      {% if user.is_authenticated %}
+        <p>logged in as {{ user.username }}</p>
+      {% endif %}
+      {% if vehicles %}
+        <ul>
+          {% for vehicle in vehicles %}
+            <li><a href="{% url 'vehicle_detail' vehicle.id %}">{{ vehicle }}</a></li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p>Site-wide, no vehicles have been registered! Be the first!</p>
+      {% endif %}
+      <p>
+        <a href="{% url 'vehicle_new' %}">New</a>
+      </p>
+    </main>
   </body>
 </html>

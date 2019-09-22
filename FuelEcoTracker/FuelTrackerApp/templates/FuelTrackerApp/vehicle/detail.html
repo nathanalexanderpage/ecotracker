@@ -15,33 +15,38 @@
     <div>
       <a href="{% url 'eco_index' %}">Home</a> &gt;&gt; <a href="{% url 'vehicle_index' %}">Vehicles</a> &gt;&gt; {{vehicle}}
     </div>
-    <h1>vehicle info</h1>
-    <div>
-      <h3>overview</h3>
-      <p>
-        Owner: {{ vehicle.owner.username }}
-      </p>
-      {% if vehicle.nickname %}
+    <main>
+      <h1>vehicle info</h1>
+      {% if user.is_authenticated %}
+        <p>logged in as {{ user.username }}</p>
+      {% endif %}
+      <div>
+        <h3>overview</h3>
         <p>
-          Name: {{ vehicle.nickname }}
+          Owner: {{ vehicle.owner.username }}
         </p>
-      {% endif %}
-      <p>
-        Make: {{ vehicle.make }}
-      </p>
-      <p>
-        Model: {{ vehicle.model }}
-      </p>
-    </div>
-    <div>
-      <h3>receipt records</h3>
-      {% if receipts %}
-        {% for receipt in receipts %}
-          <p><a href="{% url 'receipt_detail' receipt.id %}">{{ receipt.receipt_datetime }} @ {{ receipt.gas_station.company }}, {{ receipt.gallons }}gal</a></p>
-        {% endfor %}
-      {% else %}
-        <p>It appears no fuel purchases have been recorded yet for this vehicle.</p>
-      {% endif %}
-    </div>
+        {% if vehicle.nickname %}
+          <p>
+            Name: {{ vehicle.nickname }}
+          </p>
+        {% endif %}
+        <p>
+          Make: {{ vehicle.make }}
+        </p>
+        <p>
+          Model: {{ vehicle.model }}
+        </p>
+      </div>
+      <div>
+        <h3>receipt records</h3>
+        {% if receipts %}
+          {% for receipt in receipts %}
+            <p><a href="{% url 'receipt_detail' receipt.id %}">{{ receipt.receipt_datetime }} @ {{ receipt.gas_station.company }}, {{ receipt.gallons }}gal</a></p>
+          {% endfor %}
+        {% else %}
+          <p>It appears no fuel purchases have been recorded yet for this vehicle.</p>
+        {% endif %}
+      </div>
+    </main>
   </body>
 </html>

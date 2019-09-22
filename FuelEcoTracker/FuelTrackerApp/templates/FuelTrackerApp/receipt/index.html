@@ -8,18 +8,23 @@
     <div>
       <a href="{% url 'eco_index' %}">Home</a> &gt;&gt; Fill-Ups
     </div>
-    <h1>Fill-Ups</h1>
-    {% if receipts %}
-      <ul>
-        {% for receipt in receipts %}
-          <li><a href="{% url 'receipt_detail' receipt.id %}">{{ receipt }}</a></li>
-        {% endfor %}
-      </ul>
-    {% else %}
-      <p>Site-wide, no fill-ups have been recorded! This must change!</p>
-    {% endif %}
-    <p>
-      <a href="{% url 'receipt_new' %}">New</a>
-    </p>
+    <main>
+      <h1>Fill-Ups</h1>
+      {% if user.is_authenticated %}
+        <p>logged in as {{ user.username }}</p>
+      {% endif %}
+      {% if receipts %}
+        <ul>
+          {% for receipt in receipts %}
+            <li><a href="{% url 'receipt_detail' receipt.id %}">{{ receipt }}</a></li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p>Site-wide, no fill-ups have been recorded! This must change!</p>
+      {% endif %}
+      <p>
+        <a href="{% url 'receipt_new' %}">New</a>
+      </p>
+    </main>
   </body>
 </html>

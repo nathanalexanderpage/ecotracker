@@ -8,55 +8,60 @@
     <div>
       <a href="{% url 'eco_index' %}">Home</a> &gt;&gt; <a href="{% url 'vehicle_index' %}">Vehicles</a> &gt;&gt; New
     </div>
-    <h1>New Vehicle</h1>
-    <div>
-      <h3>A quick check</h3>
-      {% if vehicles %}
-        <p>Does the vehicle record you were about to create already exist?</p>
-        <figure>
-          <figcaption>Existing vehicles:</figcaption>
-          <ul>
-            {% for vehicle in vehicles %}
-              <li>
-                {{ vehicle }}
-              </li>
-            {% endfor %}
-          </ul>
-        </figure>
+    <main>
+      <h1>New Vehicle</h1>
+      {% if user.is_authenticated %}
+        <p>logged in as {{ user.username }}</p>
       {% endif %}
-    </div>
-    <!-- <form action="index.html" method="post">
       <div>
-        <h3>New Vehicle Entry Form</h3>
-        <div class="field">
-          <label for="make">Make</label>
-          <input type="text" name="make" placeholder="Honda">
+        <h3>A quick check</h3>
+        {% if vehicles %}
+          <p>Does the vehicle record you were about to create already exist?</p>
+          <figure>
+            <figcaption>Existing vehicles:</figcaption>
+            <ul>
+              {% for vehicle in vehicles %}
+                <li>
+                  {{ vehicle }}
+                </li>
+              {% endfor %}
+            </ul>
+          </figure>
+        {% endif %}
+      </div>
+      <!-- <form action="index.html" method="post">
+        <div>
+          <h3>New Vehicle Entry Form</h3>
+          <div class="field">
+            <label for="make">Make</label>
+            <input type="text" name="make" placeholder="Honda">
+          </div>
+          <div class="field">
+            <label for="model">Model</label>
+            <input type="text" name="model" placeholder="Civic">
+          </div>
+          <div class="field">
+            <label for="year">Year</label>
+            <input type="number" name="year" value="1999">
+          </div>
+          <div class="field">
+            <label for="nickname">Nickname</label>
+            <input type="text" name="nickname" placeholder="Hayden">
+          </div>
+          <div class="field">
+            <input type="submit" name="submit" value="Submit">
+          </div>
         </div>
-        <div class="field">
-          <label for="model">Model</label>
-          <input type="text" name="model" placeholder="Civic">
-        </div>
-        <div class="field">
-          <label for="year">Year</label>
-          <input type="number" name="year" value="1999">
-        </div>
-        <div class="field">
-          <label for="nickname">Nickname</label>
-          <input type="text" name="nickname" placeholder="Hayden">
-        </div>
-        <div class="field">
+      </form> -->
+      {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+      <form method="post">
+        <div>
+          {% csrf_token %}
+          {{ form }}
+          <input type="text" name="next" value="{% url 'vehicle_index' %}">
           <input type="submit" name="submit" value="Submit">
         </div>
-      </div>
-    </form> -->
-    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-    <form method="post">
-      <div>
-        {% csrf_token %}
-        {{ form }}
-        <input type="text" name="next" value="{% url 'vehicle_index' %}">
-        <input type="submit" name="submit" value="Submit">
-      </div>
-    </form>
+      </form>
+    </main>
   </body>
 </html>

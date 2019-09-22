@@ -11,14 +11,12 @@ from django.utils import timezone
 from FuelTrackerApp.forms import FuelStationForm, ReceiptForm, UserForm, VehicleForm
 from .models import FuelStation, Receipt, Vehicle
 
-# Create your views here.
+
+"""VIEWS"""
 
 # INDEX VIEWS
 def eco_index(request):
-    year = datetime.today().year
-    context = {
-        'year': year
-    }
+    context = {}
     return render(request, 'FuelTrackerApp/index.html', context)
 
 # AUTH VIEWS
