@@ -3,28 +3,23 @@
 {% block title %}HOME{% endblock %}
 
 {% block content %}
-  <main>
-    <h1>HOME</h1>
-    {% if user.is_authenticated %}
-      <p>logged in as {{ user.username }}</p>
-    {% else %}
-    <p><a href="{% url 'user_login' %}">Log in</a></p>
-    <p><a href="{% url 'user_signup' %}">Sign up</a></p>
-    {% endif %}
-    <section>
-      <h3>To-Do:</h3>
-      <ol>
-        <li><s>user sign-up</s></li>
-        <li><s>user log-in</s></li>
-        <li><s>user logout</s></li>
-        <li><s>user vehicles/fill-up visibility restriction</s></li>
-        <li>profile stats</li>
-        <li>CSS (mobile)</li>
-        <li>CSS (desktop)</li>
-        <li>stats visuals</li>
-        <li>Mapbox for fuel station locations</li>
-        <li>receipt "tags" to identify groups, subgroups for detailed stats</li>
-      </ol>
-    </section>
-  </main>
+	<h1>HOME</h1>
+	{% if user.is_authenticated %}
+		<p>logged in as {{ user.username }}</p>
+	{% endif %}
+	<section>
+		<h3>To-Do:</h3>
+		<ol>
+			<li><s>user sign-up</s></li>
+			<li><s>user log-in</s></li>
+			<li><s>user logout</s></li>
+			<li><s>user vehicles/fill-up visibility restriction</s></li>
+			<li>profile stats</li>
+			<li>CSS (mobile)</li>
+			<li>CSS (desktop)</li>
+			<li>stats visuals</li>
+			<li>Mapbox for fuel station locations</li>
+			<li>receipt "tags" to identify groups, subgroups for detailed stats</li>
+		</ol>
+	</section>
 {% endblock %}
