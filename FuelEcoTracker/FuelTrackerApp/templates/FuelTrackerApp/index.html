@@ -2,6 +2,12 @@
 
 {% block title %}HOME{% endblock %}
 
+{% block path %}
+	<section id="sub-nav">
+		Home
+	</section>
+{% endblock %}
+
 {% block content %}
 	<h1>HOME</h1>
 	{% if user.is_authenticated %}
