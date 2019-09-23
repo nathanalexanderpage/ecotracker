@@ -1,6 +1,15 @@
 {% extends "FuelTrackerApp/base.html" %}
 
-{% block title %}Fuel Station Info: {{ fuel_station.company }} — {{ fuel_station.city }}, {{ fuel_station.state_abbr }}{% endblock %}
+{% block title %}Fuel Station Info: {{ fuel_station.company }} - {{ fuel_station.city }}, {{ fuel_station.state_abbr }}{% endblock %}
+
+{% block link %}
+	<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+	<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.3.1/mapbox-gl.js'></script>
+	<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.3.1/mapbox-gl.css' rel='stylesheet' />
+	<style>
+		#map { position:absolute; top:0; bottom:0; width:100%; }
+	</style>
+{% endblock %}
 
 {% block path %}
 	<section id="sub-nav">
@@ -18,8 +27,33 @@
 		<p>Company: {{ fuel_station.company }}</p>
 		<p>Address: {{ fuel_station.address }} {{ fuel_station.city }}, {{ fuel_station.state_abbr }} {{ fuel_station.zip_code }}</p>
 	</div>
+	<!-- <div class="map">
+		<div id='map'></div>
+		<script>
+			mapboxgl.accessToken = 'pk.eyJ1IjoibmF0aGFuYWxleGFuZGVycGFnZSIsImEiOiJjazB3c3hzbGgwbmlkM2duZHJiMXNscm1wIn0.SuA7K6UeDI9FaYi8YOwJUw';
+			let map = new mapboxgl.Map({
+				container: 'map', // container id
+				style: 'mapbox://styles/nathanalexanderpage/ck0wt0ww641cc1crufxgv3x6c', // stylesheet location
+				center: [-74.50, 40], // starting position [lng, lat]
+				zoom: 9 // starting zoom
+			});
+		</script>
+	</div> -->
+	{% load static %}
+	<iframe id="mapbox-station-single" class="w-full" allowfullscreen="" mozallowfullscreen="true" webkitallowfullscreen="true" src="{% static 'FuelTrackerApp/mapbox/fuelstation_single.html' %}"></iframe>
 {% endblock %}
 
 <!-- 
-	
+	MAPBOX INFO:
+
+	API CALL FORMAT /GET VECTOR TILE
+	/v4/{tileset_id}/{zoom}/{x}/{y}{@2x}.{format}
+
+	EXAMPLE
+	"
+	https://api.mapbox.com
+	/v4/mapbox.mapbox-streets-v8/12/1171/1566.mvt?
+	style=mapbox://styles/mapbox/streets-v11@00
+	&access_token=pk.eyJ1IjoibmF0aGFuYWxleGFuZGVycGFnZSIsImEiOiJjazB3c3hzbGgwbmlkM2duZHJiMXNscm1wIn0.SuA7K6UeDI9FaYi8YOwJUw
+	"
  -->
