@@ -1,44 +1,44 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-    <div>
-      <a href="{% url 'eco_index' %}">Home</a> &gt;&gt; Sign-Up
-    </div>
-    <h1>Sign-Up Form</h1>
-    <!-- <form action="index.html" method="post">
-      <div class="simple-form">
-        <div class="field">
-          <label for="email">E-mail</label>
-          <input type="text" name="email" placeholder="gasoline@saver.com">
-        </div>
-        <div class="field">
-          <label for="username">Username</label>
-          <input type="text" name="username" placeholder="ecofriend">
-        </div>
-        <div class="field">
-          <label for="password">Password</label>
-          <input type="password" name="password">
-        </div>
-        <div class="field">
-          <label for="password_check">Re-type password</label>
-          <input type="password" name="password_check">
-        </div>
-        <div class="field">
-          <input type="submit" name="submit" value="Sign up">
-        </div>
-      </div>
-    </form> -->
-    <div>
-      <form method="POST">
-        {% csrf_token %}
-        {{ form }}
-        <input type="submit" name="submit" value="Create Account">
-      </form>
-    </div>
-    <p>Already have an account? <a href="{% url 'user_login' %}">Log in here.</a></p>
-  </body>
-</html>
+{% extends "FuelTrackerApp/base.html" %}
+
+{% block title %}SIGN-UP{% endblock %}
+
+{% block path %}
+	<section id="sub-nav">
+		<a href="{% url 'eco_index' %}">Home</a> &gt;&gt; Sign-Up
+	</section>
+{% endblock %}
+
+{% block content %}
+	<h1>Sign-Up Form</h1>
+	<!-- <form action="index.html" method="post">
+		<div class="simple-form">
+			<div class="field">
+				<label for="email">E-mail</label>
+				<input type="text" name="email" placeholder="gasoline@saver.com">
+			</div>
+			<div class="field">
+				<label for="username">Username</label>
+				<input type="text" name="username" placeholder="ecofriend">
+			</div>
+			<div class="field">
+				<label for="password">Password</label>
+				<input type="password" name="password">
+			</div>
+			<div class="field">
+				<label for="password_check">Re-type password</label>
+				<input type="password" name="password_check">
+			</div>
+			<div class="field">
+				<input type="submit" name="submit" value="Sign up">
+			</div>
+		</div>
+	</form> -->
+	<div>
+		<form method="POST">
+			{% csrf_token %}
+			{{ form }}
+			<input type="submit" name="submit" value="Create Account">
+		</form>
+	</div>
+	<p>Already have an account? <a href="{% url 'user_login' %}">Log in here.</a></p>
+{% endblock %}

@@ -1,33 +1,31 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Fuel Stations</title>
-  </head>
-  <body>
-    <div>
-      <a href="{% url 'eco_index' %}">Home</a> &gt;&gt; Fuel Stations
-    </div>
-    <main>
-      <h1>Fuel Stations</h1>
-      {% if user.is_authenticated %}
-        <p>logged in as {{ user.username }}</p>
-      {% endif %}
-      <h3>Top Fuel Stations</h3>
-      <div>
-        {% if fuel_stations %}
-          <ul>
-            {% for fuel_station in fuel_stations %}
-              <li><a href="{% url 'fuel_station_detail' fuel_station.id %}">{{ fuel_station }}</a></li>
-            {% endfor %}
-          </ul>
-        {% else %}
-          <p>Site-wide, no fuel stations have been recorded! This must change!</p>
-        {% endif %}
-      </div>
-      <p>
-        <a href="{% url 'fuel_station_new' %}">Create New</a>
-      </p>
-    </main>
-  </body>
-</html>
+{% extends "FuelTrackerApp/base.html" %}
+
+{% block title %}Fuel Stations{% endblock %}
+
+{% block path %}
+	<section id="sub-nav">
+		<a href="{% url 'eco_index' %}">Home</a> &gt;&gt; Fuel Stations
+	</section>
+{% endblock %}
+
+{% block content %}
+	<h1>Fuel Stations</h1>
+	{% if user.is_authenticated %}
+		<p>logged in as {{ user.username }}</p>
+	{% endif %}
+	<h3>Top Fuel Stations</h3>
+	<div>
+		{% if fuel_stations %}
+			<ul>
+				{% for fuel_station in fuel_stations %}
+					<li><a href="{% url 'fuel_station_detail' fuel_station.id %}">{{ fuel_station }}</a></li>
+				{% endfor %}
+			</ul>
+		{% else %}
+			<p>Site-wide, no fuel stations have been recorded! This must change!</p>
+		{% endif %}
+	</div>
+	<p>
+		<a href="{% url 'fuel_station_new' %}">Create New</a>
+	</p>
+{% endblock %}
