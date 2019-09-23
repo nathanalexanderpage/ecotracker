@@ -4,18 +4,22 @@
 
 {% block path %}
 	<section id="sub-nav">
-    <a href="{% url 'eco_index' %}">Home</a> &gt;&gt; <a href="{% url 'fuel_station_index' %}">Fuel Stations</a> &gt;&gt; {{ fuel_station }}
+		<a href="{% url 'eco_index' %}">Home</a> &gt;&gt; <a href="{% url 'fuel_station_index' %}">Fuel Stations</a> &gt;&gt; {{ fuel_station }}
 	</section>
 {% endblock %}
 
 {% block content %}
-  <h1>Fuel Station Info</h1>
-  {% if user.is_authenticated %}
-    <p>logged in as {{ user.username }}</p>
-  {% endif %}
-  <h3>Overview</h3>
-  <div>
-    <p>Company: {{ fuel_station.company }}</p>
-    <p>Address: {{ fuel_station.address }} {{ fuel_station.city }}, {{ fuel_station.state_abbr }} {{ fuel_station.zip_code }}</p>
-  </div>
+	<h1>Fuel Station Info</h1>
+	{% if user.is_authenticated %}
+		<p>logged in as {{ user.username }}</p>
+	{% endif %}
+	<h3>Overview</h3>
+	<div>
+		<p>Company: {{ fuel_station.company }}</p>
+		<p>Address: {{ fuel_station.address }} {{ fuel_station.city }}, {{ fuel_station.state_abbr }} {{ fuel_station.zip_code }}</p>
+	</div>
 {% endblock %}
+
+<!-- 
+	
+ -->

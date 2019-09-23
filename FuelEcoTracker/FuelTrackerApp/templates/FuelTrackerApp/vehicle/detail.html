@@ -16,12 +16,12 @@ Vehicle Info:
 {% endblock %}
 
 {% block content %}
-	<h1>vehicle info</h1>
+	<h1>Vehicle Details</h1>
 	{% if user.is_authenticated %}
 		<p>logged in as {{ user.username }}</p>
 	{% endif %}
 	<div>
-		<h3>overview</h3>
+		<h3>Overview</h3>
 		<p>
 			Owner: {{ vehicle.owner.username }}
 		</p>
@@ -38,11 +38,15 @@ Vehicle Info:
 		</p>
 	</div>
 	<div>
-		<h3>receipt records</h3>
+		<h3>Receipt Records</h3>
 		{% if receipts %}
-			{% for receipt in receipts %}
-				<p><a href="{% url 'receipt_detail' receipt.id %}">{{ receipt.receipt_datetime }} @ {{ receipt.gas_station.company }}, {{ receipt.gallons }}gal</a></p>
-			{% endfor %}
+			<ul>
+				{% for receipt in receipts %}
+					<li>
+							<a href="{% url 'receipt_detail' receipt.id %}">{{ receipt.receipt_datetime }} @ {{ receipt.gas_station.company }}, {{ receipt.gallons }}gal</a>
+					</li>
+				{% endfor %}
+			</ul>
 		{% else %}
 			<p>It appears no fuel purchases have been recorded yet for this vehicle.</p>
 		{% endif %}
