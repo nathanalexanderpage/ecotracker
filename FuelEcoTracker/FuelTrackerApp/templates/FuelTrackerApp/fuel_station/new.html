@@ -1,69 +1,67 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-    <div>
-      <a href="{% url 'eco_index' %}">Home</a> &gt;&gt; <a href="{% url 'fuel_station_index' %}">Fuel Stations</a> &gt;&gt; New
-    </div>
-    <main>
-      <h1>New Fuel Station</h1>
-      {% if user.is_authenticated %}
-        <p>logged in as {{ user.username }}</p>
-      {% endif %}
-      {% if fuel_stations %}
-      <div>
-        <h3>A quick check</h3>
-        <p>Does the fuel station you were about to create already exist?</p>
-        <figure>
-          <figcaption>Existing fuel stations:</figcaption>
-          <ul>
-            {% for fuel_station in fuel_stations %}
-              <li>
-                {{ fuel_station }}
-              </li>
-            {% endfor %}
-          </ul>
-        </figure>
-      </div>
-      {% endif %}
-      <!-- <form action="index.html" method="post">
-        <div>
-          <h3>New Fuel Station Entry Form</h3>
-          <div class="field">
-            <label for="company">Company</label>
-            <input type="text" name="company" placeholder="Costco">
-          </div>
-          <div class="field">
-            <label for="address">Address</label>
-            <input type="text" name="address" placeholder="1801 10th Ave NW">
-          </div>
-          <div class="field">
-            <label for="city">City</label>
-            <input type="text" name="city" placeholder="Issaquah">
-          </div>
-          <div class="field">
-            <label for="state_abbr">State</label>
-            <input type="text" name="state_abbr" placeholder="WA" maxlength="2">
-          </div>
-          <div class="field">
-            <label for="zip_code">Zip Code</label>
-            <input type="number" name="zip_code" placeholder="98027" maxlength="5">
-          </div>
-          <div class="field">
-            <input type="submit" name="submit" value="Submit">
-          </div>
-        </div>
-      </form> -->
-      {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-      <form action="{% url 'fuel_station_new' %}" method="post">
-        {% csrf_token %}
-        {{ form }}
-        <input type="hidden" name="next" value="{% url 'fuel_station_index' %}">
-        <input type="submit" name="submit" value="Submit">
-      </form>
-    </main>
-  </body>
-</html>
+{% extends "FuelTrackerApp/base.html" %}
+
+{% block title %}New Fuel Station{% endblock %}
+
+{% block path %}
+	<section id="sub-nav">
+		<a href="{% url 'eco_index' %}">Home</a> &gt;&gt; <a href="{% url 'fuel_station_index' %}">Fuel Stations</a> &gt;&gt; New
+	</section>
+{% endblock %}
+
+{% block content %}
+	<h1>New Fuel Station</h1>
+	{% if user.is_authenticated %}
+		<p>logged in as {{ user.username }}</p>
+	{% endif %}
+	{% if fuel_stations %}
+		<div>
+			<h3>A quick check</h3>
+			<p>Does the fuel station you were about to create already exist?</p>
+			<figure>
+				<figcaption>Existing fuel stations:</figcaption>
+				<ul>
+					{% for fuel_station in fuel_stations %}
+						<li>
+							{{ fuel_station }}
+						</li>
+					{% endfor %}
+				</ul>
+			</figure>
+		</div>
+	{% endif %}
+	<!-- <form action="index.html" method="post">
+		<div>
+			<h3>New Fuel Station Entry Form</h3>
+			<div class="field">
+				<label for="company">Company</label>
+				<input type="text" name="company" placeholder="Costco">
+			</div>
+			<div class="field">
+				<label for="address">Address</label>
+				<input type="text" name="address" placeholder="1801 10th Ave NW">
+			</div>
+			<div class="field">
+				<label for="city">City</label>
+				<input type="text" name="city" placeholder="Issaquah">
+			</div>
+			<div class="field">
+				<label for="state_abbr">State</label>
+				<input type="text" name="state_abbr" placeholder="WA" maxlength="2">
+			</div>
+			<div class="field">
+				<label for="zip_code">Zip Code</label>
+				<input type="number" name="zip_code" placeholder="98027" maxlength="5">
+			</div>
+			<div class="field">
+				<input type="submit" name="submit" value="Submit">
+			</div>
+		</div>
+	</form> -->
+	{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+	<form action="{% url 'fuel_station_new' %}" method="post">
+		{% csrf_token %}
+		{{ form }}
+		<input type="hidden" name="next" value="{% url 'fuel_station_index' %}">
+		<input type="submit" name="submit" value="Submit">
+	</form>
+{% endblock %}

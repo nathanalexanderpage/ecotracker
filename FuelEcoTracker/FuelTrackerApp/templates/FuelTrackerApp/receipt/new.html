@@ -1,26 +1,24 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>New Fill-Up</title>
-  </head>
-  <body>
+{% extends "FuelTrackerApp/base.html" %}
+
+{% block title %}New Fill-Up{% endblock %}
+
+{% block path %}
+<section id="sub-nav">
+    <a href="{% url 'eco_index' %}">Home</a> &gt;&gt; <a href="{% url 'receipt_index' %}">Fill-Ups</a> &gt;&gt; New
+	</section>
+{% endblock %}
+
+{% block content %}
+  <h1>New Fill-Up</h1>
+  {% if user.is_authenticated %}
+    <p>logged in as {{ user.username }}</p>
+  {% endif %}
+  {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+  <form action="{% url 'receipt_new' %}" method="post">
     <div>
-      <a href="{% url 'eco_index' %}">Home</a> &gt;&gt; <a href="{% url 'receipt_index' %}">Fill-Ups</a> &gt;&gt; New
+      {% csrf_token %}
+      {{ form }}
+      <input type="submit" name="submit" value="Submit">
     </div>
-    <main>
-      <h1>New Fill-Up</h1>
-      {% if user.is_authenticated %}
-        <p>logged in as {{ user.username }}</p>
-      {% endif %}
-      {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-      <form action="{% url 'receipt_new' %}" method="post">
-        <div>
-          {% csrf_token %}
-          {{ form }}
-          <input type="submit" name="submit" value="Submit">
-        </div>
-      </form>
-    </main>
-  </body>
-</html>
+  </form>
+{% endblock %}
