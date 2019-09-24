@@ -41,22 +41,22 @@
 					<li>
 						<label for="id_make">Make:</label>
 						<input type="text" name="make" maxlength="40" required="" id="id_make">
-						<span class="helptext">The manufacturer of the car. ex: Honda, Ford, Hyundai</span>
+						<p class="helptext">The manufacturer of the car. ex: Honda, Ford, Hyundai</p>
 					</li>
 					<li>
 						<label for="id_model">Model:</label>
 						<input type="text" name="model" maxlength="40" required="" id="id_model">
-						<span class="helptext">The "type" of car. Name is given by the manufacturer. ex: (Honda) Civic, (Ford) F-150, (Hyundai) Elantra</span>
+						<p class="helptext">The "type" of car. Name is given by the manufacturer. ex: (Honda) Civic, (Ford) F-150, (Hyundai) Elantra</p>
 					</li>
 					<li>
 						<label for="id_year">Year:</label>
 						<input type="number" name="year" value="1999" required="" id="id_year">
-						<span class="helptext">The year of manufacture.</span>
+						<p class="helptext">The year of manufacture.</p>
 					</li>
 					<li>
 						<label for="id_nickname">Name:</label>
 						<input type="text" name="nickname" maxlength="40" id="id_nickname">
-						<span class="helptext">The name commonly used to refer to this vehicle (if applicable)</span>
+						<p class="helptext">The name commonly used to refer to this vehicle (if applicable)</p>
 					</li>
 					<li>
 						<label for="id_owner">Owner:</label>
@@ -64,9 +64,9 @@
 						<p id="id_owner" class="pre-filled">
 							{{ user.username }}
 						</p>
-						<span class="helptext">The user to which this vehicle belongs</span>
+						<p class="helptext">The user to which this vehicle belongs</p>
 					</li>
-					<li>
+					<li class="oneof1">
 						<input type="submit" name="submit" value="Submit">
 					</li>
 				</ul>
