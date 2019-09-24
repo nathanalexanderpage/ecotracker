@@ -4,26 +4,26 @@
 
 {% block path %}
 	<section id="sub-nav">
-    <a href="{% url 'eco_index' %}">Home</a> &gt;&gt; Vehicles
+		<a href="{% url 'eco_index' %}">Home</a> &gt;&gt; Vehicles
 	</section>
 {% endblock %}
 
 {% block content %}
-  <h1>Vehicles</h1>
-  {% if user.is_authenticated %}
-    <p>logged in as {{ user.username }}</p>
-  {% endif %}
-  {% if vehicles %}
-    <p>Your vehicles:</p>
-    <ul>
-      {% for vehicle in vehicles %}
-        <li><a href="{% url 'vehicle_detail' vehicle.id %}">{{ vehicle }}</a></li>
-      {% endfor %}
-    </ul>
-  {% else %}
-    <p>You have not yet added any vehicles to track.</p>
-  {% endif %}
-  <p>
-    <a href="{% url 'vehicle_new' %}">Add vehicle</a>
-  </p>
+	<h1>Vehicles</h1>
+	{% if user.is_authenticated %}
+		<p>logged in as {{ user.username }}</p>
+	{% endif %}
+	{% if vehicles %}
+		<p>Your vehicles:</p>
+		<ul>
+			{% for vehicle in vehicles %}
+				<li><a href="{% url 'vehicle_detail' vehicle.id %}">{{ vehicle }}</a></li>
+			{% endfor %}
+		</ul>
+	{% else %}
+		<p>You have not yet added any vehicles to track.</p>
+	{% endif %}
+	<p>
+		<a href="{% url 'vehicle_new' %}">Add vehicle</a>
+	</p>
 {% endblock %}

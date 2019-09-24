@@ -6,22 +6,22 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('FuelTrackerApp', '0003_auto_20190818_1744'),
-    ]
+	dependencies = [
+		('FuelTrackerApp', '0003_auto_20190818_1744'),
+	]
 
-    operations = [
-        migrations.RemoveField(
-            model_name='receipt',
-            name='receipt_date',
-        ),
-        migrations.RemoveField(
-            model_name='receipt',
-            name='receipt_time',
-        ),
-        migrations.AddField(
-            model_name='receipt',
-            name='receipt_datetime',
-            field=models.DateTimeField(default=datetime.datetime.now),
-        ),
-    ]
+	operations = [
+		migrations.RemoveField(
+			model_name='receipt',
+			name='receipt_date',
+		),
+		migrations.RemoveField(
+			model_name='receipt',
+			name='receipt_time',
+		),
+		migrations.AddField(
+			model_name='receipt',
+			name='receipt_datetime',
+			field=models.DateTimeField(default=datetime.datetime.now),
+		),
+	]

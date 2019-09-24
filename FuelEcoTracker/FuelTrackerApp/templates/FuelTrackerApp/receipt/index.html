@@ -4,25 +4,25 @@
 
 {% block path %}
 	<section id="sub-nav">
-    <a href="{% url 'eco_index' %}">Home</a> &gt;&gt; Fill-Ups
+		<a href="{% url 'eco_index' %}">Home</a> &gt;&gt; Fill-Ups
 	</section>
 {% endblock %}
 
 {% block content %}
-  <h1>Fill-Ups</h1>
-  {% if user.is_authenticated %}
-    <p>logged in as {{ user.username }}</p>
-  {% endif %}
-  {% if receipts %}
-    <ul>
-      {% for receipt in receipts %}
-        <li><a href="{% url 'receipt_detail' receipt.id %}">{{ receipt }}</a></li>
-      {% endfor %}
-    </ul>
-  {% else %}
-    <p>No fill-ups have been recorded for any of your vehicles! This must change!</p>
-  {% endif %}
-  <p>
-    <a href="{% url 'receipt_new' %}">Add fill-up record</a>
-  </p>
+	<h1>Fill-Ups</h1>
+	{% if user.is_authenticated %}
+		<p>logged in as {{ user.username }}</p>
+	{% endif %}
+	{% if receipts %}
+		<ul>
+			{% for receipt in receipts %}
+				<li><a href="{% url 'receipt_detail' receipt.id %}">{{ receipt }}</a></li>
+			{% endfor %}
+		</ul>
+	{% else %}
+		<p>No fill-ups have been recorded for any of your vehicles! This must change!</p>
+	{% endif %}
+	<p>
+		<a href="{% url 'receipt_new' %}">Add fill-up record</a>
+	</p>
 {% endblock %}

@@ -5,24 +5,24 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('FuelTrackerApp', '0002_auto_20190818_1733'),
-    ]
+	dependencies = [
+		('FuelTrackerApp', '0002_auto_20190818_1733'),
+	]
 
-    operations = [
-        migrations.AlterField(
-            model_name='fuelstation',
-            name='latitude',
-            field=models.FloatField(blank=True, null=True),
-        ),
-        migrations.AlterField(
-            model_name='fuelstation',
-            name='longitude',
-            field=models.FloatField(blank=True, null=True),
-        ),
-        migrations.AlterField(
-            model_name='vehicle',
-            name='nickname',
-            field=models.CharField(blank=True, max_length=40, null=True),
-        ),
-    ]
+	operations = [
+		migrations.AlterField(
+			model_name='fuelstation',
+			name='latitude',
+			field=models.FloatField(blank=True, null=True),
+		),
+		migrations.AlterField(
+			model_name='fuelstation',
+			name='longitude',
+			field=models.FloatField(blank=True, null=True),
+		),
+		migrations.AlterField(
+			model_name='vehicle',
+			name='nickname',
+			field=models.CharField(blank=True, max_length=40, null=True),
+		),
+	]

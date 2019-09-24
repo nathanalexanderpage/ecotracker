@@ -5,15 +5,15 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('FuelTrackerApp', '0005_receipt_note'),
-    ]
+	dependencies = [
+		('FuelTrackerApp', '0005_receipt_note'),
+	]
 
-    operations = [
-        migrations.AddField(
-            model_name='receipt',
-            name='mi_since_last',
-            field=models.FloatField(default=320),
-            preserve_default=False,
-        ),
-    ]
+	operations = [
+		migrations.AddField(
+			model_name='receipt',
+			name='mi_since_last',
+			field=models.FloatField(default=320),
+			preserve_default=False,
+		),
+	]

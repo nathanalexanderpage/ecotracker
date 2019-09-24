@@ -5,14 +5,14 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('FuelTrackerApp', '0004_auto_20190818_2121'),
-    ]
+	dependencies = [
+		('FuelTrackerApp', '0004_auto_20190818_2121'),
+	]
 
-    operations = [
-        migrations.AddField(
-            model_name='receipt',
-            name='note',
-            field=models.CharField(blank=True, max_length=50, null=True),
-        ),
-    ]
+	operations = [
+		migrations.AddField(
+			model_name='receipt',
+			name='note',
+			field=models.CharField(blank=True, max_length=50, null=True),
+		),
+	]

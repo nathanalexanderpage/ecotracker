@@ -9,45 +9,45 @@ import django.utils.timezone
 
 class Migration(migrations.Migration):
 
-    initial = True
+	initial = True
 
-    dependencies = [
-        migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-    ]
+	dependencies = [
+		migrations.swappable_dependency(settings.AUTH_USER_MODEL),
+	]
 
-    operations = [
-        migrations.CreateModel(
-            name='FuelStation',
-            fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('company', models.CharField(max_length=50)),
-                ('address', models.CharField(max_length=100)),
-                ('latitude', models.FloatField(blank=True)),
-                ('longitude', models.FloatField(blank=True)),
-            ],
-        ),
-        migrations.CreateModel(
-            name='Vehicle',
-            fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('make', models.CharField(max_length=40)),
-                ('model', models.CharField(max_length=40)),
-                ('year', models.IntegerField()),
-                ('nickname', models.CharField(max_length=40)),
-                ('owner', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
-            ],
-        ),
-        migrations.CreateModel(
-            name='Receipt',
-            fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('receipt_date', models.DateField(default=datetime.date.today)),
-                ('receipt_time', models.TimeField(default=django.utils.timezone.now)),
-                ('gallons', models.FloatField()),
-                ('price_per_gal', models.FloatField()),
-                ('is_cash_purchase', models.BooleanField()),
-                ('gas_station', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='FuelTrackerApp.FuelStation')),
-                ('vehicle', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='FuelTrackerApp.Vehicle')),
-            ],
-        ),
-    ]
+	operations = [
+		migrations.CreateModel(
+			name='FuelStation',
+			fields=[
+				('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+				('company', models.CharField(max_length=50)),
+				('address', models.CharField(max_length=100)),
+				('latitude', models.FloatField(blank=True)),
+				('longitude', models.FloatField(blank=True)),
+			],
+		),
+		migrations.CreateModel(
+			name='Vehicle',
+			fields=[
+				('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+				('make', models.CharField(max_length=40)),
+				('model', models.CharField(max_length=40)),
+				('year', models.IntegerField()),
+				('nickname', models.CharField(max_length=40)),
+				('owner', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+			],
+		),
+		migrations.CreateModel(
+			name='Receipt',
+			fields=[
+				('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+				('receipt_date', models.DateField(default=datetime.date.today)),
+				('receipt_time', models.TimeField(default=django.utils.timezone.now)),
+				('gallons', models.FloatField()),
+				('price_per_gal', models.FloatField()),
+				('is_cash_purchase', models.BooleanField()),
+				('gas_station', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='FuelTrackerApp.FuelStation')),
+				('vehicle', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='FuelTrackerApp.Vehicle')),
+			],
+		),
+	]
