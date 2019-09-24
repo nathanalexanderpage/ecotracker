@@ -17,6 +17,6 @@ from django.contrib import admin
 from django.urls import include, path
 
 urlpatterns = [
-    path('fuel/', include('FuelTrackerApp.urls')),
+    path('', include('FuelTrackerApp.urls')),
     path('admin/', admin.site.urls),
 ]
