@@ -30,47 +30,45 @@
 				</figure>
 			{% endif %}
 		</section>
-		<section>
+		<form method="post">
+			{% csrf_token %}
+			<h3>New Vehicle Entry Form</h3>
 			{% if error_message %}
 				<p><strong>{{ error_message }}</strong></p>
 			{% endif %}
-			<form method="post">
-				{% csrf_token %}
-				<h3>New Vehicle Entry Form</h3>
-				<ul>
-					<li>
-						<label for="id_make">Make:</label>
-						<input type="text" name="make" maxlength="40" required="" id="id_make">
-						<p class="helptext">The manufacturer of the car. ex: Honda, Ford, Hyundai</p>
-					</li>
-					<li>
-						<label for="id_model">Model:</label>
-						<input type="text" name="model" maxlength="40" required="" id="id_model">
-						<p class="helptext">The "type" of car. Name is given by the manufacturer. ex: (Honda) Civic, (Ford) F-150, (Hyundai) Elantra</p>
-					</li>
-					<li>
-						<label for="id_year">Year:</label>
-						<input type="number" name="year" value="1999" required="" id="id_year">
-						<p class="helptext">The year of manufacture.</p>
-					</li>
-					<li>
-						<label for="id_nickname">Name:</label>
-						<input type="text" name="nickname" maxlength="40" id="id_nickname">
-						<p class="helptext">The name commonly used to refer to this vehicle (if applicable)</p>
-					</li>
-					<li>
-						<label for="id_owner">Owner:</label>
-						<input type="hidden" name="owner" value="{{ user.id }}">
-						<p id="id_owner" class="pre-filled">
-							{{ user.username }}
-						</p>
-						<p class="helptext">The user to which this vehicle belongs</p>
-					</li>
-					<li class="oneof1">
-						<input type="submit" name="submit" value="Submit">
-					</li>
-				</ul>
-			</form>
-		</section>
+			<ul>
+				<li>
+					<label for="id_make">Make:</label>
+					<input type="text" name="make" maxlength="40" required="" id="id_make">
+					<p class="helptext">The manufacturer of the car. ex: Honda, Ford, Hyundai</p>
+				</li>
+				<li>
+					<label for="id_model">Model:</label>
+					<input type="text" name="model" maxlength="40" required="" id="id_model">
+					<p class="helptext">The "type" of car. Name is given by the manufacturer. ex: (Honda) Civic, (Ford) F-150, (Hyundai) Elantra</p>
+				</li>
+				<li>
+					<label for="id_year">Year:</label>
+					<input type="number" name="year" value="1999" required="" id="id_year">
+					<p class="helptext">The year of manufacture.</p>
+				</li>
+				<li>
+					<label for="id_nickname">Name:</label>
+					<input type="text" name="nickname" maxlength="40" id="id_nickname">
+					<p class="helptext">The name commonly used to refer to this vehicle (if applicable)</p>
+				</li>
+				<li>
+					<label for="id_owner">Owner:</label>
+					<input type="hidden" name="owner" value="{{ user.id }}">
+					<p id="id_owner" class="pre-filled">
+						{{ user.username }}
+					</p>
+					<p class="helptext">The user to which this vehicle belongs</p>
+				</li>
+				<li class="oneof1">
+					<input type="submit" name="submit" value="Submit">
+				</li>
+			</ul>
+		</form>
 	{% endif %}
 {% endblock %}

@@ -47,7 +47,7 @@ def user_signup(request):
 			new_user = User.objects.create_user(**form.cleaned_data)
 			print(new_user)
 			login(request, new_user)
-			return redirect(request, 'eco_index')
+			return redirect('eco_index')
 	else:
 		form = UserForm()
 		print(form)
@@ -119,10 +119,10 @@ def receipt_detail(request, receipt_id):
 	except:
 		raise Http404('Indicated purchase does not exist')
 	context = {
-		'receipt': receipt,
 		'fuel_station': fuel_station,
-		'vehicle': vehicle,
-		'price_total': round((receipt.price_per_gal * receipt.gallons), 2)
+		'price_total': round((receipt.price_per_gal * receipt.gallons), 2),
+		'receipt': receipt,
+		'vehicle': vehicle
 	}
 	return render(request, 'FuelTrackerApp/receipt/detail.html', context)
 def receipt_new(request):
@@ -134,9 +134,13 @@ def receipt_new(request):
 			model_instance.save()
 			return redirect('receipt_index')
 	else:
+		vehicles = Vehicle.objects.filter(owner_id=request.user.id)
+		fuel_stations = FuelStation.objects.all()
 		form = ReceiptForm()
 		context = {
-			'form': form
+			'form': form,
+			'fuel_stations': fuel_stations,
+			'vehicles': vehicles
 		}
 		return render(request, 'FuelTrackerApp/receipt/new.html', context)
 
