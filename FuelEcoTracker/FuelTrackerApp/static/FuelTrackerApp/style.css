@@ -61,7 +61,7 @@ nav ul li {
 nav ul a:hover {
 	background-color: rgb(115, 230, 191);
 }
-.flex-stretch-center {
+.flex-stretch-center { /* also BUFFER DIV BEFORE FOOTER (for short pages) */
 	padding: 0;
 	flex-grow: 1;
 	flex-shrink: 1;
@@ -83,5 +83,3 @@ nav ul a:hover {
 	width: 100%;
 	height: 30em;
 }
-
-/* BUFFER DIV BEFORE FOOTER (for short pages) */

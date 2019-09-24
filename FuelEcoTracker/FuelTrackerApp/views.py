@@ -122,7 +122,6 @@ def receipt_detail(request, receipt_id):
 		'receipt': receipt,
 		'fuel_station': fuel_station,
 		'vehicle': vehicle,
-		# 'owner': owner,
 		'price_total': round((receipt.price_per_gal * receipt.gallons), 2)
 	}
 	return render(request, 'FuelTrackerApp/receipt/detail.html', context)
@@ -130,7 +129,6 @@ def receipt_new(request):
 	if request.method == 'POST':
 		form = ReceiptForm(request.POST)
 		if form.is_valid():
-			next_url = request.POST.get('next')
 			model_instance = form.save(commit=False)
 			model_instance.timestamp = timezone.now()
 			model_instance.save()
@@ -170,13 +168,14 @@ def vehicle_new(request):
 	except:
 		vehicles = None
 	if request.method == 'POST':
+		print(request.POST)
 		form = VehicleForm(request.POST)
 		if form.is_valid():
 			next_url = request.POST.get('next')
 			model_instance = form.save(commit=False)
 			model_instance.timestamp = timezone.now()
 			model_instance.save()
-			return redirect(vehicle_index)
+			return redirect('vehicle_index')
 	else:
 		form = VehicleForm()
 	context = {
