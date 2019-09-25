@@ -27,14 +27,6 @@ def user_login(request):
 		user = authenticate(request, username=username, password=password)
 		if user is not None:
 			login(request, user)
-			if user.is_authenticated:
-				request.session['pref'] = {
-					'redirect': {
-						'new_receipt_return_index': False,
-						'new_station_return_index': False,
-						'new_vehicle_return_index': False
-					}
-				}
 			return redirect('eco_index')
 		else:
 			return redirect(request, 'user_login')

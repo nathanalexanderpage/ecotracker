@@ -1,26 +1,23 @@
 {% extends "FuelTrackerApp/base.html" %}
 
 {% block title %}
-Vehicle Info:
+	Vehicle Info:
 	{% if vehicle.nickname %}
 		{{ vehicle.nickname }}
 	{% else %}
-		{{ vehicle.make }} {{ vehicle.model }}
+		{{ vehicle.short }}
 	{% endif %}
 {% endblock %}
 
 {% block path %}
 	<section id="sub-nav">
-		<a href="{% url 'eco_index' %}">Home</a> &gt;&gt; <a href="{% url 'vehicle_index' %}">Vehicles</a> &gt;&gt; {{vehicle}}
+		<a href="{% url 'eco_index' %}">Home</a> &gt;&gt; <a href="{% url 'vehicle_index' %}">Vehicles</a> &gt;&gt; {{ vehicle.short }}
 	</section>
 {% endblock %}
 
 {% block content %}
 	<h1>Vehicle Details</h1>
-	{% if user.is_authenticated %}
-		<p>logged in as {{ user.username }}</p>
-	{% endif %}
-	<div>
+	<section>
 		<h3>Overview</h3>
 		<p>
 			Owner: {{ vehicle.owner.username }}
@@ -36,8 +33,8 @@ Vehicle Info:
 		<p>
 			Model: {{ vehicle.model }}
 		</p>
-	</div>
-	<div>
+	</section>
+	<section>
 		<h3>Receipt Records</h3>
 		{% if receipts %}
 			<ul>
@@ -50,5 +47,5 @@ Vehicle Info:
 		{% else %}
 			<p>It appears no fuel purchases have been recorded yet for this vehicle.</p>
 		{% endif %}
-	</div>
+	</section>
 {% endblock %}

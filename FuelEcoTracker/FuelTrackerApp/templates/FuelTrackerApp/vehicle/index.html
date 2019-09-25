@@ -17,7 +17,7 @@
 		<p>Your vehicles:</p>
 		<ul>
 			{% for vehicle in vehicles %}
-				<li><a href="{% url 'vehicle_detail' vehicle.id %}">{{ vehicle }}</a></li>
+				<li><a href="{% url 'vehicle_detail' vehicle.id %}">{{ vehicle.short }}</a></li>
 			{% endfor %}
 		</ul>
 	{% else %}
