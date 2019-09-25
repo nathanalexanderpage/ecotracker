@@ -9,20 +9,20 @@
 {% endblock %}
 
 {% block content %}
-	<h1>Sign-Up Form</h1>
 	<form method="post">
 		{% csrf_token %}
+		<h1>Sign-Up Form</h1>
 		<ul>
 			<li>
 				<label for="id_username">Username:</label><input type="text" name="username" maxlength="150" required="" id="id_username">
-				<p class="helptext">Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.</p>
+				<p class="helptext">150 characters or fewer. Letters, digits and the following are allowed: @ . + - _ </p>
 			</li>
 			<li>
 				<label for="id_password">Password:</label>
 				<input type="password" name="password" maxlength="128" required="" id="id_password">
 			</li>
 			<li>
-				<label for="id_email">Email address:</label>
+				<label for="id_email">E-mail address:</label>
 				<input type="email" name="email" maxlength="254" id="id_email">
 			</li>
 			<li>

@@ -1,6 +1,6 @@
 {% extends "FuelTrackerApp/base.html" %}
 
-{% block title %}HOME{% endblock %}
+{% block title %}Home{% endblock %}
 
 {% block path %}
 	<section id="sub-nav">
@@ -14,28 +14,95 @@
 		<p>logged in as {{ user.username }}</p>
 	{% endif %}
 	<section>
-		<h3>To-Do:</h3>
+		<h3 id="todo">To-Do:</h3>
 		<ol>
 			<li><s>user sign-up</s></li>
 			<li><s>user log-in</s></li>
 			<li><s>user logout</s></li>
 			<li><s>user vehicles/fill-up visibility restriction</s></li>
-			<li><s>CSS (mobile)</s></li>
-			<li><s>Mapbox map</s></li>
+			<li>CSS
+				<ul>
+					<li><s>mobile</s></li>
+					<li>desktop</li>
+				</ul>
+			</li>
+			<li>Mapbox
+				<ul>
+					<li><s>placement</s></li>
+					<li>w/ Fuel Station pins</li>
+				</ul>
+			</li>
 			<li>receipt form: datetime not hardcoded</li>
-			<li>add pins with Fuel Station locations to map</li>
-			<li>CSS (desktop)</li>
-			<li>profile stats</li>
-			<li>stats visuals</li>
-			<li>advanced search query for fill-ups</li>
-			<li>receipt "tags" to identify groups, subgroups for detailed stats</li>
-			<li>make said "tags" searchable</li>
-			<li>export user records to CSV/XLS file types -- make downloadable at any time for users who desire</li>
+			<li>profile
+				<ul>
+					<li>settings</li>
+					<li>stats
+						<ul>
+							<li>text</li>
+							<li>visual (graphQL?)</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+			<li>advanced search query
+				<ul>
+					<li>Fuel Stations</li>
+					<li>Receipts</li>
+					<li>Vehicles</li>
+				</ul>
+			</li>
+			<li>receipt "tags" to identify groups, subgroups for detailed stats
+				<ul>
+					<li>creation (many-to-many)</li>
+					<li>viewable</li>
+					<li>searchable</li>
+				</ul>
+			</li>
+			<li>export user records to CSV/XLS
+				<ul>
+					<li>downloadable as files</li>
+					<li>OAuth & CSV/XLS file export to Google Drive</li>
+				</ul>
+			</li>
+			<li>documentation
+				<ul>
+					<li>README.md</li>
+					<li>"How to use" instructional site pages</li>
+				</ul>
+			</li>
 			<li>from vehicle detail page: link to create new fill-up. auto-assigns vehicle to that whose page directed to 'new fill-up' (via session?)</li>
-			<li>README.md</li>
-			<li>documentation/instructionals</li>
-			<li>(CR)UD for Fuel Station, Receipt, Vehicle</li>
-			<li>user preferences (factor into auth_user table)</li>
+			<li>CRUD
+				<ul>
+					<li><s>Create</s>
+						<ul>
+							<li><s>Fuel Stations</s></li>
+							<li><s>Receipts</s></li>
+							<li><s>Vehicles</s></li>
+						</ul>
+					</li>
+					<li><s>Read</s>
+						<ul>
+							<li><s>Fuel Stations</s></li>
+							<li><s>Receipts</s></li>
+							<li><s>Vehicles</s></li>
+						</ul>
+					</li>
+					<li>Update
+						<ul>
+							<li>Fuel Stations</li>
+							<li>Receipts</li>
+							<li>Vehicles</li>
+						</ul>
+					</li>
+					<li>Delete
+						<ul>
+							<li>Fuel Stations</li>
+							<li>Receipts</li>
+							<li>Vehicles</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
 		</ol>
 	</section>
 {% endblock %}
