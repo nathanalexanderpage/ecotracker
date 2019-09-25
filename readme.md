@@ -8,11 +8,11 @@ A web app to organize and simplify the process of tracking fuel purchases and fu
 
 ## Features
 
-### Live (as of 2019-09-25):
+### Live Features (as of 2019-09-25):
 1. fuel-up (receipt) record keeping
 2. per-vehicle fuel economy tracking (per receipt & overall)
 
-### In development:
+### Features in development:
 1. myGarage overall fuel economy tracking (per month, year, etc.)
 2. per-vehicle fuel economy tracking (per month, overall for user-defined subset of fill-ups such as roadtrip-related)
 3. XLS/CSV data export to file (download and Google Drive upload)

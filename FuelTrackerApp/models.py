@@ -18,6 +18,9 @@ class Vehicle(models.Model):
 	def str_no_owner(self):
 		return ((self.nickname + ', ') if self.nickname else '') + ' ' + str(self.year) + ' ' + self.make + ' ' + self.model
 
+	def print_year(self):
+		return str(self.year)
+
 	def short(self):
 		if self.nickname:
 			return self.nickname + ' (' + self.make + ' ' + self.model + ')'
@@ -82,7 +85,7 @@ class Receipt(models.Model):
 		return price_per_gal < 3.1
 
 	def mpg(self):
-		return self.mi_since_last/self.gallons
+		return round(self.mi_since_last / self.gallons, 1)
 
 	def str_mpg(self):
 		return str(self.mpg())

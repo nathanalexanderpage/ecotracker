@@ -31,6 +31,18 @@
 		<p>
 			Model: {{ vehicle.model }}
 		</p>
+		<p>
+			Year: {{ vehicle.print_year }}
+		</p>
+	</section>
+	<section>
+		<h3>Statistics (Overall)</h3>
+		<p>
+			Fuel economy: {{ vehicle_stats.fuel_economy_overall }} mpg
+		</p>
+		<p>
+			Fill-ups: {{ vehicle_stats.receipts_no }}
+		</p>
 	</section>
 	<section>
 		<h3>Fill-Up Records</h3>

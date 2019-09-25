@@ -151,11 +151,22 @@ def vehicle_detail(request, vehicle_id):
 		vehicle = Vehicle.objects.get(pk=vehicle_id)
 		receipts =  Receipt.objects.filter(vehicle_id=vehicle.id)
 		print(receipts)
+		vehicle_stats = {}
+		receipts_aggregate = {
+			'mi': 0,
+			'gal': 0
+		}
+		for receipt in receipts:
+			receipts_aggregate['mi'] += receipt.mi_since_last
+			receipts_aggregate['gal'] += receipt.gallons
+		vehicle_stats['fuel_economy_overall'] = round(receipts_aggregate['mi'] / receipts_aggregate['gal'], 1)
+		vehicle_stats['receipts_no'] = len(receipts)
 	except:
 		raise Http404('Indicated vehicle does not exist')
 	context = {
-		'vehicle': vehicle,
-		'receipts': receipts
+		'vehicle_stats': vehicle_stats,
+		'receipts': receipts,
+		'vehicle': vehicle
 	}
 	return render(request, 'FuelTrackerApp/vehicle/detail.html', context)
 def vehicle_new(request):
