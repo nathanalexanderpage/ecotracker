@@ -37,13 +37,13 @@ Many people, when filling up their tanks, do not fill up their tanks to a consis
 2. automatic fuelling function of fuel pump does not exist (pretty unlikely at this point, hopefully)
 3. tank is manually "topped off" by driver after the pump's automatic fuelling process completes
 
-***These and similar circumstances severely diminish the benefits of using Ecotracker.***
+*These and similar circumstances severely diminish the benefits of using Ecotracker.*
 
 #### **Summary:** In order to receive accurate calculations from Ecotracker regarding fuel efficiency (how many miles per gallon your vehicle gets), you must:
 1. allow fuel pumps to fill your tanks automatically - they will stop pumping when the appropriate amount has been replenished
 2. record during each fill-up the vehicle's number of miles driven since its last fill-up
 
-#### This ensures that every time you fill up, the number of miles driven since your last fill-up corresponds consistently with the number of gallons purchased.
+##### This ensures that every time you fill up, the number of miles driven since your last fill-up corresponds consistently with the number of gallons purchased.
 
 ### Record keeping for fuel purchases
 
