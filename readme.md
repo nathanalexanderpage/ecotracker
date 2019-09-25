@@ -8,12 +8,12 @@ A web app to organize and simplify the process of tracking fuel purchases and fu
 
 ## Features
 
-### Complete (as of 2019-09-25):
+### Live (as of 2019-09-25):
 1. fuel-up (receipt) record keeping
 2. per-vehicle fuel economy tracking (per receipt & overall)
 
 ### In development:
-1. myGarage overall fuel economy tracking
+1. myGarage overall fuel economy tracking (per month, year, etc.)
 2. per-vehicle fuel economy tracking (per month, overall for user-defined subset of fill-ups such as roadtrip-related)
 3. XLS/CSV data export to file (download and Google Drive upload)
 
@@ -22,7 +22,11 @@ A web app to organize and simplify the process of tracking fuel purchases and fu
 
 ### Intro
 
-This intro section explains how to ensure the numbers you record will produce accurate measurements for your vehicles' fuel efficiency statistics.
+This 'How to use' section explains how to use Ecotracker in order to take advantage of each feature listed in the 'Features' section. Subsection titles correspond directly to list items in 'Live Features' list.
+
+### Foreword on proper data entry
+
+This section explains how to ensure the numbers you record will produce accurate measurements for your vehicles' fuel efficiency statistics.
 
 ***Warning: without abiding by the guidelines set forth in this section, accurate fuel efficiency statistics can't be obtained!***
 
@@ -45,7 +49,7 @@ Many people, when filling up their tanks, do not fill up their tanks to a consis
 
 This ensures that every time you fill up, the number of miles driven since your last fill-up corresponds consistently with the number of gallons purchased.
 
-### Record keeping for fuel purchases
+### 1. Record keeping for fuel purchases
 
 For new users, perform the following tasks in order to start keeping track of fuel purchases:
 1. Add a vehicle for which you want to keep fuel purchase records
@@ -65,11 +69,11 @@ If your fuel station is not present in the list of fuel stations, use the "add f
 #### Add fill-up (fuel purchase) records
 Use the "add fill-up" form in the 'Fill-Up' section
 
-### Fuel economy and other statistics tracking
+### 2. Statistics tracking
 
 As a by-product of keeping fuel purchase records, vehicles' fuel efficiency statistics will be automatically calculated -- all you have to do is view them!
 
-#### Viewing statistics
+#### Viewing fuel economy-related statistics
 
 ##### Per Vehicle:
 Navigate to 'Vehicles'. Choose one of your existing vehicles. Statistics will be present on that vehicle's page once it has fill-up records.
