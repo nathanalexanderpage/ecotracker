@@ -43,7 +43,7 @@ Many people, when filling up their tanks, do not fill up their tanks to a consis
 1. allow fuel pumps to fill your tanks automatically - they will stop pumping when the appropriate amount has been replenished
 2. record during each fill-up the vehicle's number of miles driven since its last fill-up
 
-##### This ensures that every time you fill up, the number of miles driven since your last fill-up corresponds consistently with the number of gallons purchased.
+This ensures that every time you fill up, the number of miles driven since your last fill-up corresponds consistently with the number of gallons purchased.
 
 ### Record keeping for fuel purchases
 
@@ -65,9 +65,14 @@ If your fuel station is not present in the list of fuel stations, use the "add f
 #### Add fill-up (fuel purchase) records
 Use the "add fill-up" form in the 'Fill-Up' section
 
-#### View statistics
-Per Vehicle:
+### Fuel economy and other statistics tracking
+
+As a by-product of keeping fuel purchase records, vehicles' fuel efficiency statistics will be automatically calculated -- all you have to do is view them!
+
+#### Viewing statistics
+
+##### Per Vehicle:
 Navigate to 'Vehicles'. Choose one of your existing vehicles. Statistics will be present on that vehicle's page once it has fill-up records.
 
-Per Fill-Up:
+##### Per Fill-Up:
 Navigate to 'Fill-Ups'. Choose one of your existing fill-up records. Statistics will be present on that fill-up record's page.
