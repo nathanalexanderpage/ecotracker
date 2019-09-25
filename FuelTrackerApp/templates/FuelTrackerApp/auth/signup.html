@@ -1,0 +1,34 @@
+{% extends "FuelTrackerApp/base.html" %}
+
+{% block title %}Sign-Up{% endblock %}
+
+{% block path %}
+	<section id="sub-nav">
+		<a href="{% url 'eco_index' %}">Home</a> &gt;&gt; Sign-Up
+	</section>
+{% endblock %}
+
+{% block content %}
+	<form method="post">
+		{% csrf_token %}
+		<h1>Sign-Up Form</h1>
+		<ul>
+			<li>
+				<label for="id_username">Username:</label><input type="text" name="username" maxlength="150" required="" id="id_username">
+				<p class="helptext">150 characters or fewer. Letters, digits and the following are allowed: @ . + - _ </p>
+			</li>
+			<li>
+				<label for="id_password">Password:</label>
+				<input type="password" name="password" maxlength="128" required="" id="id_password">
+			</li>
+			<li>
+				<label for="id_email">E-mail address:</label>
+				<input type="email" name="email" maxlength="254" id="id_email">
+			</li>
+			<li>
+				<input type="submit" name="submit" value="Create Account">
+			</li>
+		</ul>
+	</form>
+	<p>Already have an account? <a href="{% url 'user_login' %}">Log in here.</a></p>
+{% endblock %}
