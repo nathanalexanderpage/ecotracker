@@ -10,8 +10,8 @@
 
 {% block content %}
 	<h1>Purchase Info</h1>
-	<h3>Overview</h3>
-	<div>
+	<section>
+		<h3>Overview</h3>
 		<p>
 			<a href="{% url 'vehicle_detail' vehicle.id %}">{{ vehicle.short }}</a>
 		</p>
@@ -20,9 +20,6 @@
 		</p>
 		<p>
 			Total: ${{ price_total }}
-		</p>
-		<p>
-			Distance since last fill-up: {{ receipt.mi_since_last }} mi
 		</p>
 		<p>
 			Paid with
@@ -38,5 +35,17 @@
 		<p>
 			Location: <a href="{% url 'fuel_station_detail' fuel_station.id %}">{{ fuel_station.full_address }}</a>
 		</p>
-	</div>
+	</section>
+	<section>
+		<h3>Fuel Economy Info</h3>
+		<p>
+			Distance travelled: {{ receipt.mi_since_last }} mi
+		</p>
+		<p>
+			Fuel economy: {{ receipt.str_mpg }} mpg
+		</p>
+		<p>
+			Calculation seem inaccurate? See my <a href="{% url 'eco_index' %}">explanation on how to get the best results from Ecotracker</a>.
+		</p>
+	</section>
 {% endblock %}

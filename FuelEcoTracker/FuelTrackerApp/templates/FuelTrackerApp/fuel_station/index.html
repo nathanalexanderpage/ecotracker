@@ -10,22 +10,18 @@
 
 {% block content %}
 	<h1>Fuel Stations</h1>
-	{% if user.is_authenticated %}
-		<p>logged in as {{ user.username }}</p>
-	{% endif %}
 	<h3>Top Fuel Stations</h3>
-	<div>
-		{% if fuel_stations %}
-			<ul>
-				{% for fuel_station in fuel_stations %}
-					<li><a href="{% url 'fuel_station_detail' fuel_station.id %}">{{ fuel_station }}</a></li>
-				{% endfor %}
-			</ul>
-		{% else %}
-			<p>Site-wide, no fuel stations have been recorded! This must change!</p>
-		{% endif %}
-	</div>
+	{% if fuel_stations %}
+		<ul>
+			{% for fuel_station in fuel_stations %}
+				<li><a href="{% url 'fuel_station_detail' fuel_station.id %}">{{ fuel_station }}</a></li>
+			{% endfor %}
+		</ul>
+	{% else %}
+		<p>Site-wide, no fuel stations have been recorded! This must change!</p>
+	{% endif %}
+	<h3>Create new</h3>
 	<p>
-		<a href="{% url 'fuel_station_new' %}">Create New</a>
+		<a href="{% url 'fuel_station_new' %}">Add fuel station</a>
 	</p>
 {% endblock %}

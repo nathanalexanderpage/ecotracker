@@ -10,18 +10,17 @@
 
 {% block content %}
 	<h1>Fill-Ups</h1>
-	{% if user.is_authenticated %}
-		<p>logged in as {{ user.username }}</p>
-	{% endif %}
 	{% if receipts %}
+		<h3>Existing records</h3>
 		<ul>
 			{% for receipt in receipts %}
-				<li><a href="{% url 'receipt_detail' receipt.id %}">{{ receipt }}</a></li>
+				<li><a href="{% url 'receipt_detail' receipt.id %}">{{ receipt.short }}</a></li>
 			{% endfor %}
 		</ul>
 	{% else %}
 		<p>No fill-ups have been recorded for any of your vehicles! This must change!</p>
 	{% endif %}
+	<h3>Create new</h3>
 	<p>
 		<a href="{% url 'receipt_new' %}">Add fill-up record</a>
 	</p>

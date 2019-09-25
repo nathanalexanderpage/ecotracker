@@ -59,14 +59,14 @@ class Receipt(models.Model):
 			vehicle_name = self.vehicle.nickname + ' (' + self.vehicle.make + ' ' + self.vehicle.model + ')'
 		else:
 			vehicle_name = str(self.vehicle.year) + ' ' +  self.vehicle.make + ' ' + self.vehicle.model
-		return self.vehicle.owner.username + '\'s ' + vehicle_name + ': ' + str(self.receipt_datetime)[:16] + ' @ ' + self.gas_station.company + ', ' + str(self.gallons) + 'gal w/ ' + ('cash' if self.is_cash_purchase else 'card') + ' — $' + str(round(self.gallons * self.price_per_gal, 2))
+		return self.vehicle.owner.username + '\'s ' + vehicle_name + ': ' + str(self.receipt_datetime)[:16] + ' @ ' + self.gas_station.company + ', ' + str(self.gallons) + ' gal w/ ' + ('cash' if self.is_cash_purchase else 'card') + ' — $' + str(round(self.gallons * self.price_per_gal, 2))
 
 	def short(self):
 		if self.vehicle.nickname:
 			vehicle_name = self.vehicle.nickname + ' (' + self.vehicle.make + ' ' + self.vehicle.model + ')'
 		else:
 			vehicle_name = str(self.vehicle.year) + ' ' + self.vehicle.make + ' ' + self.vehicle.model
-		return vehicle_name + ': ' + str(self.receipt_datetime)[:16] + ' @ ' + self.gas_station.company + ', ' + str(self.gallons) + 'gal w/ ' + ('cash' if self.is_cash_purchase else 'card') + ' — $' + str(round(self.gallons * self.price_per_gal, 2))
+		return vehicle_name + ': ' + str(self.receipt_datetime)[:16] + ' @ ' + self.gas_station.company + '; ' + str(self.gallons) + ' gal ($' + str(round(self.gallons * self.price_per_gal, 2)) + ')'
 
 	def short_date_only(self):
 		if self.vehicle.nickname:
@@ -80,3 +80,9 @@ class Receipt(models.Model):
 
 	def is_very_cheap(self):
 		return price_per_gal < 3.1
+
+	def mpg(self):
+		return self.mi_since_last/self.gallons
+
+	def str_mpg(self):
+		return str(self.mpg())

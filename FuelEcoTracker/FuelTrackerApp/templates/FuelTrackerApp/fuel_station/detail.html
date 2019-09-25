@@ -19,41 +19,9 @@
 
 {% block content %}
 	<h1>Fuel Station Info</h1>
-	{% if user.is_authenticated %}
-		<p>logged in as {{ user.username }}</p>
-	{% endif %}
 	<h3>Overview</h3>
-	<div>
-		<p>Company: {{ fuel_station.company }}</p>
-		<p>Address: {{ fuel_station.address }} {{ fuel_station.city }}, {{ fuel_station.state_abbr }} {{ fuel_station.zip_code }}</p>
-	</div>
-	<!-- <div class="map">
-		<div id='map'></div>
-		<script>
-			mapboxgl.accessToken = 'pk.eyJ1IjoibmF0aGFuYWxleGFuZGVycGFnZSIsImEiOiJjazB3c3hzbGgwbmlkM2duZHJiMXNscm1wIn0.SuA7K6UeDI9FaYi8YOwJUw';
-			let map = new mapboxgl.Map({
-				container: 'map', // container id
-				style: 'mapbox://styles/nathanalexanderpage/ck0wt0ww641cc1crufxgv3x6c', // stylesheet location
-				center: [-74.50, 40], // starting position [lng, lat]
-				zoom: 9 // starting zoom
-			});
-		</script>
-	</div> -->
+	<p>Company: {{ fuel_station.company }}</p>
+	<p>Address: {{ fuel_station.full_address }}</p>
 	{% load static %}
 	<iframe id="mapbox-station-single" class="w-full" allowfullscreen="" mozallowfullscreen="true" webkitallowfullscreen="true" src="{% static 'FuelTrackerApp/mapbox/fuelstation_single.html' %}"></iframe>
 {% endblock %}
-
-<!-- 
-	MAPBOX INFO:
-
-	API CALL FORMAT /GET VECTOR TILE
-	/v4/{tileset_id}/{zoom}/{x}/{y}{@2x}.{format}
-
-	EXAMPLE
-	"
-	https://api.mapbox.com
-	/v4/mapbox.mapbox-streets-v8/12/1171/1566.mvt?
-	style=mapbox://styles/mapbox/streets-v11@00
-	&access_token=pk.eyJ1IjoibmF0aGFuYWxleGFuZGVycGFnZSIsImEiOiJjazB3c3hzbGgwbmlkM2duZHJiMXNscm1wIn0.SuA7K6UeDI9FaYi8YOwJUw
-	"
- -->

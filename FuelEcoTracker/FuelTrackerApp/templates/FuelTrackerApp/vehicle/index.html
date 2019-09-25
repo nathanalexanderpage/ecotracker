@@ -10,11 +10,8 @@
 
 {% block content %}
 	<h1>Vehicles</h1>
-	{% if user.is_authenticated %}
-		<p>logged in as {{ user.username }}</p>
-	{% endif %}
+	<h3>Existing vehicles</h3>
 	{% if vehicles %}
-		<p>Your vehicles:</p>
 		<ul>
 			{% for vehicle in vehicles %}
 				<li><a href="{% url 'vehicle_detail' vehicle.id %}">{{ vehicle.short }}</a></li>
@@ -23,6 +20,7 @@
 	{% else %}
 		<p>You have not yet added any vehicles to track.</p>
 	{% endif %}
+	<h3>New</h3>
 	<p>
 		<a href="{% url 'vehicle_new' %}">Add vehicle</a>
 	</p>
