@@ -23,6 +23,7 @@ A web app to organize and simplify the process of tracking fuel purchases and fu
 ### Intro
 
 This intro section explains how to ensure the numbers you record will produce accurate measurements for your vehicles' fuel efficiency statistics.
+
 ***Warning: without abiding by the guidelines set forth in this section, accurate fuel efficiency statistics can't be obtained!***
 
 In order to calculate fuel economy of your vehicle (how many miles per gallon your car got) for any given distance we will need the following pieces of data:
