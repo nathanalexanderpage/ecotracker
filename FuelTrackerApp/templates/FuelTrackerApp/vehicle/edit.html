@@ -1,60 +1,44 @@
 {% extends "FuelTrackerApp/base.html" %}
 
-{% block title %}New Vehicle{% endblock %}
+{% block title %}Edit Vehicle: {{ vehicle.short }}{% endblock %}
 
 {% block path %}
 	<section id="sub-nav">
-		<a href="{% url 'eco_index' %}">Home</a> &gt;&gt; <a href="{% url 'vehicle_index' %}">Vehicles</a> &gt;&gt; New
+		<a href="{% url 'eco_index' %}">Home</a> &gt;&gt; <a href="{% url 'vehicle_index' %}">Vehicles</a> &gt;&gt; Edit: {{ vehicle.short }}
 	</section>
 {% endblock %}
 
 {% block content %}
-	<h1>New Vehicle</h1>
+	<h1>Edit Vehicle</h1>
 	{% if not user.is_authenticated %}
-		<p>You must log in to add vehicles.</p>
+		<p>You must log in to edit vehicles.</p>
 		<p>&gt;&gt; <a href="{% url 'user_login' %}">Log in now</a></p>
 	{% else %}
-		<section>
-			<h3>A quick check</h3>
-			{% if vehicles %}
-				<p>Does the vehicle record you were about to create already exist?</p>
-				<figure>
-					<figcaption>Existing vehicles:</figcaption>
-					<ul>
-						{% for vehicle in vehicles %}
-							<li>
-								{{ vehicle }}
-							</li>
-						{% endfor %}
-					</ul>
-				</figure>
-			{% endif %}
-		</section>
 		<form method="post">
 			{% csrf_token %}
-			<h3>New Vehicle Entry Form</h3>
+			<h3>Edit Vehicle Form</h3>
 			{% if error_message %}
 				<p><strong>{{ error_message }}</strong></p>
 			{% endif %}
 			<ul>
 				<li>
 					<label for="id_make">Make:</label>
-					<input type="text" name="make" maxlength="40" required="" id="id_make">
+					<input type="text" name="make" maxlength="40" required="" id="id_make" value="{{ vehicle.make }}">
 					<p class="helptext">The manufacturer of the car. ex: Honda, Ford, Hyundai</p>
 				</li>
 				<li>
 					<label for="id_model">Model:</label>
-					<input type="text" name="model" maxlength="40" required="" id="id_model">
+					<input type="text" name="model" maxlength="40" required="" id="id_model" value="{{ vehicle.model }}">
 					<p class="helptext">The "type" of car. Name is given by the manufacturer. ex: (Honda) Civic, (Ford) F-150, (Hyundai) Elantra</p>
 				</li>
 				<li>
 					<label for="id_year">Year:</label>
-					<input type="number" name="year" value="1999" required="" id="id_year">
+					<input type="number" name="year" value="1999" required="" id="id_year" value="{{ vehicle.print_year }}">
 					<p class="helptext">The year of manufacture.</p>
 				</li>
 				<li>
 					<label for="id_nickname">Name:</label>
-					<input type="text" name="nickname" maxlength="40" id="id_nickname">
+					<input type="text" name="nickname" maxlength="40" id="id_nickname" value="{% if vehicle.nickname %}{{ vehicle.nickname }}{% endif %}">
 					<p class="helptext">The name commonly used to refer to this vehicle (if applicable)</p>
 				</li>
 				<li>
@@ -66,7 +50,7 @@
 					<p class="helptext">The user to which this vehicle belongs</p>
 				</li>
 				<li>
-					<input type="submit" name="submit" value="Submit">
+					<input type="submit" name="submit" value="Submit changes">
 				</li>
 			</ul>
 		</form>

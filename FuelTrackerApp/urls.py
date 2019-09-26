@@ -8,6 +8,10 @@ urlpatterns = [
 	# ex: /
 	path('', views.eco_index, name='eco_index'),
 
+	# HELP PATTERN
+	# ex: /help/
+	path('help/', views.help_index, name='help_index'),
+
 	# AUTH PATTERN
 	# ex: /auth/login/
 	path('login/', views.user_login, name='user_login'),

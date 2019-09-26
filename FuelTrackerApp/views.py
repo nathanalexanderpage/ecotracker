@@ -19,6 +19,10 @@ def eco_index(request):
 	context = {}
 	return render(request, 'FuelTrackerApp/index.html', context)
 
+# HELP VIEWS
+def help_index(request):
+	return render(request, 'FuelTrackerApp/help/index.html')
+
 # AUTH VIEWS
 def user_login(request):
 	if request.method == 'POST':

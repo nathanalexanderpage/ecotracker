@@ -23,5 +23,6 @@
 	<p>Company: {{ fuel_station.company }}</p>
 	<p>Address: {{ fuel_station.full_address }}</p>
 	{% load static %}
+	<!-- FIXME: change iframe 'src' attribute to 'srcdoc' for direct HTML code input from this same template -->
 	<iframe id="mapbox-station-single" class="w-full" allowfullscreen="" mozallowfullscreen="true" webkitallowfullscreen="true" src="{% static 'FuelTrackerApp/mapbox/fuelstation_single.html' %}"></iframe>
 {% endblock %}
